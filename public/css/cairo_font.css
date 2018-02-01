@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'cairo';
+    font-style: normal;
+    font-weight: 300;
+    src:  url(../fonts/cairo/Cairo-Regular.ttf) format('truetype');
+}
+.knocks_font_cairo{
+  font-family: cairo !important;
+}

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'titillium';
+    font-style: normal;
+    font-weight: 300;
+    src:  url(../fonts/titillium/TitilliumWeb-Regular.ttf) format('truetype');
+}
+.knocks_font_titillium{
+  font-family: titillium !important;
+}
