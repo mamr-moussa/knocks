@@ -40,7 +40,7 @@ class Comment extends Model
   //Comment methods
 
      public function initialize($object){
-      $parent_object = new Object();
+      $parent_object = new obj();
       $parent_object->initialize('comment');
       $object = json_decode($object);
       $this->body = $object->body ;
