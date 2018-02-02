@@ -311,7 +311,7 @@ opacity: 0 !important;
 
 					<!--Stage Two-->
 					<div class = "row animated zoomIn" :class = "{'knocks_hidden' :stageNumber != 2}">
-					<knocksdatepicker
+		{{-- 			<knocksdatepicker
 					id = "birthdate"
 					icon = "knocks-birthday-cake knocks_text_light"
 					label_class = "knocks_text_light"
@@ -325,7 +325,23 @@ opacity: 0 !important;
 					error_class = "knocks_input_light_error animated shake"
 					:scope = "['registeration','stage_two']"
 					icon_error = "red-text text-lighten-1"
-					></knocksdatepicker>
+					></knocksdatepicker> --}}
+
+					  <div class="row">
+					  	<div class = "col">
+					  		<span class = "knocks-birthday-cake knocks_text_light"></span>
+					  		<span class = "knocks_text_light ">Birthdate</span> 
+					  	</div>
+					  	<div class = "col ">
+					  		    
+    <el-date-picker
+    
+      v-model="birthdate"
+      type="date"
+      placeholder="Pick a day">
+    </el-date-picker>
+					  	</div>
+  </div>
 
 					<div class = "col s4 l3">
 						<span class = "knocks-male2 knocks_text_light knocks_text_ms"></span>
@@ -360,7 +376,7 @@ opacity: 0 !important;
 					<knocksbutton
 					placeholder = "Next"
 					@knocks_stack_passed = "stageSwitch(3)"
-					
+					:disabled = "!hasDate"
 					:submit_flag = "false"
 					success_at = "done"
 					gid = "stage_one_next"
@@ -556,7 +572,7 @@ opacity: 0 !important;
 					username : username ,
 					email : email ,
 					gender : gender ,
-					birthdate : birthdate ,
+					birthdate : formateMySqlDate ,
 					password : password ,
 					language : 'en'
 					}"></knocksbutton>
