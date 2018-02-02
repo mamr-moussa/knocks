@@ -479,6 +479,7 @@
            }else if(scope == null && vm.scope == null){
             vm.isFired = true;
             App.$emit('knocks_input_status' , vm.isValid);
+            console.log('ist ' + vm.gid +' ' +vm.isValid);
            }
           });
           
@@ -670,7 +671,7 @@
               { message_id : this.max_length_msg  , icon : 'knocks-alert-circle' , prefix : null , postfix : this.max_len},
               { message_id : this.min_length_msg  , icon : 'knocks-alert-circle' , prefix : null , postfix : this.min_len},
               { message_id : this.regex_bus_msg   , icon : 'knocks-alert-circle' , prefix : null , postfix : ' '+this.regex_example},
-              { message_id : this.check_live_msg   , icon : 'knocks-alert-circle' , prefix : null , postfix : this.check_live_msg},
+              { message_id : this.check_live_msg   , icon : 'knocks-alert-circle' , prefix : null , postfix : this.check_live_prefix_msg},
               { message_id : this.is_required_msg    , icon : 'knocks-alert-circle' , prefix : null , postfix : null},
               { message_id : this.samilarity_msg  , icon : 'knocks-alert-circle' , prefix : null , postfix : ' '+this.same_as_name},
             ];

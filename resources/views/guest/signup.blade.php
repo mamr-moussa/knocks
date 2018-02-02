@@ -38,6 +38,8 @@ opacity: 0 !important;
 			  <h1 class = "center">
 			  	<span class = "knocks-knocks knocks_text_light"></span>
 			  	<static_message msg = "Welcome To Knocks" classes = "knocks_text_light "></static_message>
+			  	<hr class="uk-divider-icon">
+			  	<static_message msg = "Comming Soon" classes = "knocks_text_light "></static_message>
 			  </h1>
 
 			  <div class = "">
@@ -147,9 +149,8 @@ opacity: 0 !important;
 					placeholder = "Username, Email Or Phone number"
 					gid = "username_login"
 					icon = "knocks-email3"
-					:is_required = "true"
-					:max_len = "15"
-					:min_len = "2"
+					:is_required = "true"	
+					:min_len = "5"
 					el_follower
 					:mat_follower=  "false"
 					v-model = "username_login"
@@ -203,8 +204,8 @@ opacity: 0 !important;
 				</div>
 			</transition>
 			
-			<transition  name="custom-classes-transition" :duration="{ enter: 500, leave: 800 }"
-				enter-active-class="animated slideInUp knocks_animation_delay"
+			<transition  name="custom-classes-transition" 
+				enter-active-class="animated slideInUp "
 				leave-active-class="animated zoomOut">
 				<div v-if = "loginStage == false">
 					<h4 class = " knocks_text_lmd animated bounceInDown knocks_language_default_font">
@@ -240,7 +241,7 @@ opacity: 0 !important;
 					<knocksinput
 					el_follower
 					:mat_follower=  "false"
-					placeholder = "Middle Name"
+					placeholder = "Middle Name (optional)"
 					gid = "middle_name"
 					icon = "knocks-face-moustache3"
 					:max_len = "15"
@@ -273,7 +274,7 @@ opacity: 0 !important;
 					<knocksinput
 					el_follower
 					:mat_follower=  "false"
-					placeholder = "Nickname"
+					placeholder = "Nickname (optional)"
 					gid = "nickname"
 					icon = "knocks-face-sunglasses"
 					:is_required = "false"
@@ -290,7 +291,7 @@ opacity: 0 !important;
 					<knocksbutton
 					placeholder = "Next"
 					@knocks_stack_passed = "stageSwitch(2)"
-					icon = "knocks-chevron-thin-right right"
+					
 					:submit_flag = "false"
 					success_at = "done"
 					gid = "stage_one_next"
@@ -315,7 +316,7 @@ opacity: 0 !important;
 					icon = "knocks-birthday-cake knocks_text_light"
 					label_class = "knocks_text_light"
 					placeholder = "Birthdate"
-					:max = "{ day : 0 , month : 0 , year : -15  , calc : false}"
+					:max = "{ day : 0 , month : 0 , year : -5  , calc : false}"
 					:min = "{ day : 0 , month : 0 , year : -120  , calc : false }"
 					v-model = "birthdate"
 					knocksclass = "knocks_input_ps_light"
@@ -331,7 +332,7 @@ opacity: 0 !important;
 						<span class = "knocks-female2 knocks_text_light knocks_text_ms"></span>
 						<static_message msg = "Gender" classes = "knocks_text_ms"></static_message>
 					</div>
-					<div class = "col s8 ">
+					<div class = "col s12 l8 ">
 						
 					     <el-radio-group v-model="gender">
 					      <el-radio-button :label="getTranslation('Male')"></el-radio-button>
@@ -346,7 +347,7 @@ opacity: 0 !important;
 					placeholder = "previous"
 					@knocks_button_clicked = "stageSwitch(1)"
 					:validate = "false"
-					icon = "knocks-chevron-thin-left"
+					
 					:submit_flag = "false"
 					success_at = "done"
 					gid = "stage_one_next"
@@ -359,7 +360,7 @@ opacity: 0 !important;
 					<knocksbutton
 					placeholder = "Next"
 					@knocks_stack_passed = "stageSwitch(3)"
-					icon = "knocks-chevron-thin-right right"
+					
 					:submit_flag = "false"
 					success_at = "done"
 					gid = "stage_one_next"
@@ -405,9 +406,9 @@ opacity: 0 !important;
 					check_at = "user/check"
 					check_invalid_at = "exist"
 					check_valid_at = "not_exist"
-					regex = "[a-zA-z]*[^\$]"
+					regex = "^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$"
 					check_live_prefix_msg = ", This Username is already taken."
-					regex_example = "No Two process with special chars :D"
+					regex_example = "Your username can't contain a special charachters."
 					knocksclass = "knocks_input_ps_light"
 					icon_class = "knocks_text_light"
 					icon_error = "red-text text-lighten-1"
@@ -421,10 +422,14 @@ opacity: 0 !important;
 					placeholder = "Email"
 					gid = "email"
 					icon = "knocks-email3"
+					type = "email"
 					:is_required = "true"
 					:min_len = "2"
 					v-model = "email"
-					:check_live = "true"
+					check_live 
+					regex = '^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+					regex_example = "Your email format is not correct, please follow this schema example@foo.bar"
+					check_live_prefix_msg = ", This Email already has an account."
 					check_at = "email/check"
 					check_invalid_at = "exist"
 					check_valid_at = "not_exist"
@@ -438,22 +443,22 @@ opacity: 0 !important;
 
 					<knocksbutton
 					placeholder = "previous"
-					@knocks_button_clicked = "stageSwitch(1)"
+					@knocks_button_clicked = "stageSwitch(2)"
 					:validate = "false"
-					icon = "knocks-chevron-thin-left"
+					
 					:submit_flag = "false"
 					success_at = "done"
 					gid = "stage_one_next"
 					label_classes = "knocks_text_sm"
 					button_classes = "waves-effect waves-light btn knocks_btn_light knocks_color_kit_light knocks_text_md knocks_fair_bounds col s5"
 					:scope = "['stage_three']"
-					:validation_error = "getTranslation('There\'s some feilds we need you to complete it.')">
+					validation_error = "There's some feilds we need you to complete it.">
 					</knocksbutton>
 
 					<knocksbutton
 					placeholder = "Next"
 					@knocks_stack_passed = "stageSwitch(4)"
-					icon = "knocks-chevron-thin-right right"
+					
 					:submit_flag = "false"
 					success_at = "done"
 					gid = "stage_one_next"
@@ -520,7 +525,7 @@ opacity: 0 !important;
 					placeholder = "previous"
 					@knocks_button_clicked = "stageSwitch(3)"
 					:validate = "false"
-					icon = "knocks-chevron-thin-left"
+					
 					:submit_flag = "false"
 					success_at = "done"
 					label_classes = "knocks_text_sm"
@@ -530,7 +535,7 @@ opacity: 0 !important;
 					</knocksbutton>
 					<knocksbutton
 					placeholder = "Register"
-					icon = "knocks-checkmark3 right"
+					
 					submit_at = "registeration"
 					success_at = "done"
 					label_classes = "knocks_text_sm"

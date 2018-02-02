@@ -300,6 +300,7 @@ class ComposerStaticInite6c63ca61b830e919cd743d9fd7963b0
     );
 
     public static $classMap = array (
+        'App\\Answer' => __DIR__ . '/../..' . '/app/Answer.php',
         'App\\Ballon' => __DIR__ . '/../..' . '/app/Ballon.php',
         'App\\Blob' => __DIR__ . '/../..' . '/app/Blob.php',
         'App\\Candy_session' => __DIR__ . '/../..' . '/app/Candy_session.php',
@@ -347,6 +348,7 @@ class ComposerStaticInite6c63ca61b830e919cd743d9fd7963b0
         'App\\Http\\Controllers\\PrivacySetCircleController' => __DIR__ . '/../..' . '/app/Http/Controllers/PrivacySetCircleController.php',
         'App\\Http\\Controllers\\PrivacySetUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/PrivacySetUserController.php',
         'App\\Http\\Controllers\\PublicFigureController' => __DIR__ . '/../..' . '/app/Http/Controllers/PublicFigureController.php',
+        'App\\Http\\Controllers\\QuestionController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuestionController.php',
         'App\\Http\\Controllers\\ReactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReactionController.php',
         'App\\Http\\Controllers\\ReplyController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReplyController.php',
         'App\\Http\\Controllers\\SavedObjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/SavedObjectController.php',
@@ -373,7 +375,6 @@ class ComposerStaticInite6c63ca61b830e919cd743d9fd7963b0
         'App\\Knock' => __DIR__ . '/../..' . '/app/Knock.php',
         'App\\Language' => __DIR__ . '/../..' . '/app/Language.php',
         'App\\MessageBus' => __DIR__ . '/../..' . '/app/MessageBus.php',
-        'App\\Object' => __DIR__ . '/../..' . '/app/Object.php',
         'App\\Privacy_preset' => __DIR__ . '/../..' . '/app/Privacy_preset.php',
         'App\\Privacy_set_circle' => __DIR__ . '/../..' . '/app/Privacy_set_circle.php',
         'App\\Privacy_set_user' => __DIR__ . '/../..' . '/app/Privacy_set_user.php',
@@ -383,6 +384,7 @@ class ComposerStaticInite6c63ca61b830e919cd743d9fd7963b0
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Public_figure' => __DIR__ . '/../..' . '/app/Public_figure.php',
+        'App\\Question' => __DIR__ . '/../..' . '/app/Question.php',
         'App\\Reaction' => __DIR__ . '/../..' . '/app/Reaction.php',
         'App\\Reply' => __DIR__ . '/../..' . '/app/Reply.php',
         'App\\Sport' => __DIR__ . '/../..' . '/app/Sport.php',

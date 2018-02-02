@@ -206,6 +206,9 @@ a:hover{
 .knocks_text_anchor{
   color : $knocksPrimaryColor !important;
 }
+.knocks_text_pink{
+  color : $knocksPinkColor;
+}
 .knocks_text_anchor:hover{
   color : $knocksActiveColor !important;
 }
@@ -285,6 +288,9 @@ a:hover{
 .knocks_text_light{
   color : $knocksLightColor !important;
 }
+.knocks_text_light_active{
+  color : $knocksLightActiveColor !important;
+}
 .knocks_dark_anchor{
   color : $knocksPrimaryColor !important;
 }
@@ -303,6 +309,22 @@ a:hover{
 .knocks_input_ps {
   border: 0px solid transparent !important;
   border-bottom: 3px solid $knocksPrimaryColor !important;
+  color: $knocksPrimaryColor !important;
+  -webkit-box-shadow: 0px 0px 0px transparent !important;
+  background-color: transparent !important;
+  border-radius:0px !important;
+}
+.knocks_input_textarea_ps {
+  border: 0px solid transparent !important;
+  border-bottom: 3px solid $knocksPrimaryColor !important;
+  color: $knocksPrimaryColor !important;
+  -webkit-box-shadow: 0px 0px 0px transparent !important;
+  background-color: transparent !important;
+  border-radius:0px !important;
+}
+.knocks_input_textarea_ps:focus {
+  border: 0px solid transparent !important;
+  border-bottom: 3px solid teal !important;
   color: $knocksPrimaryColor !important;
   -webkit-box-shadow: 0px 0px 0px transparent !important;
   background-color: transparent !important;

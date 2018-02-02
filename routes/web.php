@@ -16,23 +16,25 @@
 
 Route::post('contacts' , 'UserController@retriveContact');
 
-Route::get('userinfo' , function(){
-  return App\User::find(21)->retriveForUser(20);
-});
+// Route::get('userinfo' , function(){
+//   return App\User::find(21)->retriveForUser(20);
+// });
 
-Route::get('registeration' , function(){
-  return view('guest.signup');
-});
-Route::get('rec' , function(){
-  return view('rec');
-});
+// Route::get('registeration' , function(){
+//   return view('guest.signup');
+// });
+// Route::get('rec' , function(){
+//   return view('rec');
+// });
 
 
 //DEVELOPERS ROUTES STARTS /////////////////////////////////////////////////////////////
 //Language APIS
-Route::get('/dev' , function(){
-  return view('test.home');
-});
+// Route::get('/dev' , function(){
+//   return view('test.home');
+// });
+
+
 
 Route::post('dev/all_langs' , 'LanguageController@collect');
 Route::post('dev/all_msgs' , 'StaticMessageController@collect');
@@ -148,21 +150,21 @@ Route::post('media/avatar/upload' , 'BlobController@uploadAvatar');
 
 Route::post('media/cover/upload' , 'BlobController@uploadCover');
 
-Route::get('media/record/retrive/{id}' , 'BlobController@retriveRecord');
+// Route::get('media/record/retrive/{id}' , 'BlobController@retriveRecord');
 
-Route::get('media/image/retrive/{id}' , 'BlobController@retriveImage');
+// Route::get('media/image/retrive/{id}' , 'BlobController@retriveImage');
 
-Route::get('media/file/retrive/{id}' , 'BlobController@retriveFile');
+// Route::get('media/file/retrive/{id}' , 'BlobController@retriveFile');
 
-Route::get('media/avatar/{id}' , 'BlobController@retriveAvatar');
+// Route::get('media/avatar/{id}' , 'BlobController@retriveAvatar');
 
-Route::get('media/avatar/compressed/{id}' , 'BlobController@retriveAvatarCompressed');
+// Route::get('media/avatar/compressed/{id}' , 'BlobController@retriveAvatarCompressed');
 
-Route::get('media/cover/{id}' , 'BlobController@retriveCover');
+// Route::get('media/cover/{id}' , 'BlobController@retriveCover');
 
-Route::get('media/cover/compressed/{id}' , 'BlobController@retriveCoverCompressed');
+// Route::get('media/cover/compressed/{id}' , 'BlobController@retriveCoverCompressed');
 
-Route::get('media/avatar/ref/compressed/{id}' , 'BlobController@retriveAvatarCompressed');
+// Route::get('media/avatar/ref/compressed/{id}' , 'BlobController@retriveAvatarCompressed');
 
 Route::post('search/main' , 'UserController@mainSearch');
 
@@ -177,25 +179,25 @@ Route::post('search/main' , 'UserController@mainSearch');
 
 
 
-Route::get('add_notification' , function(){
-  $not = new App\Ballon();
-  $not->initialize( json_encode(
-    array(
-    "index" => array(
-      "title_image" => 'url' ,
-      "title_value" => 'Knocks_user',
-      "category" => 'post' ,
-      "has_picture" => true ,
-      "callback_url" => 'somewhere'  ,
-      "replyable" => true ,
-    ) ,
-    "parent" => 1 ,
-    "user" => 1 ,
-    "content" => 'Hai this is a content'
-  )
-  ));
-  return 'done';
-});
+// Route::get('add_notification' , function(){
+//   $not = new App\Ballon();
+//   $not->initialize( json_encode(
+//     array(
+//     "index" => array(
+//       "title_image" => 'url' ,
+//       "title_value" => 'Knocks_user',
+//       "category" => 'post' ,
+//       "has_picture" => true ,
+//       "callback_url" => 'somewhere'  ,
+//       "replyable" => true ,
+//     ) ,
+//     "parent" => 1 ,
+//     "user" => 1 ,
+//     "content" => 'Hai this is a content'
+//   )
+//   ));
+//   return 'done';
+// });
 
 
 Route::post('tttt' , function(){
@@ -214,9 +216,9 @@ Route::post('tttt' , function(){
  });
 
 
-Route::get('homeu' , function(){
-  return view('user.home');
-});
+// Route::get('homeu' , function(){
+//   return view('user.home');
+// });
 
 Route::get('/', 'UserController@goHome' );
 Route::get('/home', 'UserController@goHome' );
@@ -224,9 +226,9 @@ Route::get('/home', 'UserController@goHome' );
 //Developers routes
 
 //Language APIS
-Route::get('/dev' , function(){
-  return view('test.home');
-});
+// Route::get('/dev' , function(){
+//   return view('test.home');
+// });
 
 
 /*
@@ -357,6 +359,7 @@ Route::post('allusers' , 'UserController@getAllUsers');
 Route::group(['middleware' => 'guest'] , function(){
 
 
+
 Route::get('signup' , function(){
   return view('guest.signup');
 });
@@ -368,6 +371,14 @@ Route::get('signin' , function(){auth()->logout(); return view('guest.signup');}
 
 Route::group(['middleware' => 'auth'] , function(){
 
+  Route::get('faq/survey' , function(){
+    if(auth()->user()->age() > 13)
+      return view('guest.survey');
+    else return view('guest.candy_survey');
+});
+
+  Route::post('survey/submit' , 'AnswerController@create');
+
   Route::post('user/updatepp' , 'UserController@updateProfileIndex');
 
   Route::post('retrive_comment' , 'CommentController@retrive');
@@ -378,11 +389,11 @@ Route::group(['middleware' => 'auth'] , function(){
 
   Route::post('retrive_knock' , 'KnockController@retrive' );
 
-  Route::get('/{user}' , 'UserController@routeToProfile');
+  // Route::get('/{user}' , 'UserController@routeToProfile');
 
-  Route::get('/knock/{knock}' , 'KnockController@viewKnock');
+  // Route::get('/knock/{knock}' , 'KnockController@viewKnock');
 
-  Route::get('/knock/{knock}/{comment}' , 'KnockController@viewKnockWithComment');
+  // Route::get('/knock/{knock}/{comment}' , 'KnockController@viewKnockWithComment');
 
 
 
@@ -421,39 +432,39 @@ Route::post('checkinit_reaction/reaction' , 'ReactionController@checkinit_reacti
 
   Route::post('view/circle' , 'CircleController@view');
 
-  Route::get('cir' , function(){
-    $c = auth()->user()->circles()->get();
-     $arr = array();
-    foreach($c as $cm){
+  // Route::get('cir' , function(){
+  //   $c = auth()->user()->circles()->get();
+  //    $arr = array();
+  //   foreach($c as $cm){
 
-      array_push($arr , $cm->circle_name);
-      array_push($arr , $cm->CircleMembers()->get());
-      $cmm = $cm->CircleMembers()->get();
-      foreach($cmm as $cmi){
-          array_push( $arr , $cmi->user()->get()->pluck('first_name') );
-      }
-    }
-    return json_encode($arr);
-  });
+  //     array_push($arr , $cm->circle_name);
+  //     array_push($arr , $cm->CircleMembers()->get());
+  //     $cmm = $cm->CircleMembers()->get();
+  //     foreach($cmm as $cmi){
+  //         array_push( $arr , $cmi->user()->get()->pluck('first_name') );
+  //     }
+  //   }
+  //   return json_encode($arr);
+  // });
 
 
 });
-Route::get('test' , function(){
-  return view('test');
-});
+// Route::get('test' , function(){
+//   return view('test');
+// });
 
 
-Route::get('currentcsrf/{user}/{tooken}' , function($user ,$tooken ){ 
-  $userObject =  App\User::where( 'id' , '=' , $user)->get();
-  if($userObject->count() == 0) return 'not_found'.$user;
-  else $userObject = $userObject[0];
-  if($userObject->upload_tooken == $tooken) return 'valid'; else return 'invalid';
-})->middleware('cors');
+// Route::get('currentcsrf/{user}/{tooken}' , function($user ,$tooken ){ 
+//   $userObject =  App\User::where( 'id' , '=' , $user)->get();
+//   if($userObject->count() == 0) return 'not_found'.$user;
+//   else $userObject = $userObject[0];
+//   if($userObject->upload_tooken == $tooken) return 'valid'; else return 'invalid';
+// })->middleware('cors');
 
-Route::get('validobj/{user}/{object}' , function($user ,$object ){ 
+// Route::get('validobj/{user}/{object}' , function($user ,$object ){ 
 
- return App\Object::find($object)->isAvailable($user) ? 'valid' : 'invalid';
-})->middleware('cors');
+//  return App\Object::find($object)->isAvailable($user) ? 'valid' : 'invalid';
+// })->middleware('cors');
 
 
 

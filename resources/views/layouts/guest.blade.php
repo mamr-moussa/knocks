@@ -8,6 +8,7 @@
     <!--Internet Explorer Comp -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}">
     <link rel="icon" type="text/css" href="{{asset('snaps/knocks_tiny.png')}}">
+    <link rel="shortcut icon" type="text/css" href="{{asset('snaps/knocks_tiny.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Mobile First -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,6 +39,13 @@
     </main>
   </body>
   @include('layouts.footer_dark')
-
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://www.knocksapp.com",
+  "name": "Knocks.",
+}
+</script>
   <script src = "{{asset('js/app.js')}}"></script>
 </html>

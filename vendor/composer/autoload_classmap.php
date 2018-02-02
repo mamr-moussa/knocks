@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Answer' => $baseDir . '/app/Answer.php',
     'App\\Ballon' => $baseDir . '/app/Ballon.php',
     'App\\Blob' => $baseDir . '/app/Blob.php',
     'App\\Candy_session' => $baseDir . '/app/Candy_session.php',
@@ -53,6 +54,7 @@ return array(
     'App\\Http\\Controllers\\PrivacySetCircleController' => $baseDir . '/app/Http/Controllers/PrivacySetCircleController.php',
     'App\\Http\\Controllers\\PrivacySetUserController' => $baseDir . '/app/Http/Controllers/PrivacySetUserController.php',
     'App\\Http\\Controllers\\PublicFigureController' => $baseDir . '/app/Http/Controllers/PublicFigureController.php',
+    'App\\Http\\Controllers\\QuestionController' => $baseDir . '/app/Http/Controllers/QuestionController.php',
     'App\\Http\\Controllers\\ReactionController' => $baseDir . '/app/Http/Controllers/ReactionController.php',
     'App\\Http\\Controllers\\ReplyController' => $baseDir . '/app/Http/Controllers/ReplyController.php',
     'App\\Http\\Controllers\\SavedObjectController' => $baseDir . '/app/Http/Controllers/SavedObjectController.php',
@@ -79,7 +81,6 @@ return array(
     'App\\Knock' => $baseDir . '/app/Knock.php',
     'App\\Language' => $baseDir . '/app/Language.php',
     'App\\MessageBus' => $baseDir . '/app/MessageBus.php',
-    'App\\Object' => $baseDir . '/app/Object.php',
     'App\\Privacy_preset' => $baseDir . '/app/Privacy_preset.php',
     'App\\Privacy_set_circle' => $baseDir . '/app/Privacy_set_circle.php',
     'App\\Privacy_set_user' => $baseDir . '/app/Privacy_set_user.php',
@@ -89,6 +90,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Public_figure' => $baseDir . '/app/Public_figure.php',
+    'App\\Question' => $baseDir . '/app/Question.php',
     'App\\Reaction' => $baseDir . '/app/Reaction.php',
     'App\\Reply' => $baseDir . '/app/Reply.php',
     'App\\Sport' => $baseDir . '/app/Sport.php',

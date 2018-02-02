@@ -712,7 +712,12 @@ class User extends Authenticatable
 
     }
 
+   public function age(){
+    $year = (int) substr($this->birthdate , 0 , 4);
+    $current = (int) date('Y');
+    return $current - $year;
 
+   }
 
     public function getUserKnocksRegular(){
           $knocks = array();

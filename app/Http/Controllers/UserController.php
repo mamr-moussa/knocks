@@ -44,7 +44,10 @@ class UserController extends Controller
 
     public function goHome(Request $request){
       if(Auth::check()){
-        return view('user.home');
+        //return view('user.home');
+        if(auth()->user()->age() > 13)
+      return view('guest.survey');
+    else return view('guest.candy_survey');
       }else return view('guest.signup');
     }
     //Authorised user's language

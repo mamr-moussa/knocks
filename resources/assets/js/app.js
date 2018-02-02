@@ -403,7 +403,7 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
     slideShow : 1,
     slidesCount : document.getElementsByClassName('knocks_slideshow_element').length,
     showProfileUploader : false ,
-    loginStage : true,
+    loginStage : false,
     lowerTrigger : null ,
     loggedIn : true ,
     profileUserObject : null ,
@@ -417,6 +417,37 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
 
     //Document
 
+    //Survey
+
+    q1 : 'yes' , 
+    q2 : [] , 
+    q2o : '' ,
+    q3 : '3' ,
+    q4 : [0,10] ,
+    q5 : '2' ,
+    q6 : [] , 
+    q6o : [] , 
+    q6i : '' ,
+    q7 : [0,2] ,
+    q8 : [0,2] ,
+    q9 : [] , 
+    q10 : 'yes' , 
+    q11 : '2' ,
+    q12 : '2' , 
+    q13 : '2' , 
+     
+    q14 : 'yes' , 
+    q15 : 'yes' ,
+    q16 : '2', 
+    q17 : '2' , 
+    q18 : '2' , 
+    q19o : '',
+
+   qv : 'first',
+   qp : 'yes',
+   harry : 1,
+   fantastic : '',
+
     windowWidth : $(window).width(),
 
 
@@ -424,6 +455,22 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
 
 
   computed: {
+
+    surveyStepOneValid(){
+      return this.surveyQ2isValid && this.surveyQ6isValid && this.surveyQ9isValid ? true : false;
+    },
+    surveyQ2isValid(){
+      if(this.q1 == 'yes') return true;
+      return this.q2.length == 0 && this.q2o.length == 0 ? false : true;
+    },
+    surveyQ6isValid(){
+      if(this.q1 == 'no') return true;
+      return this.q6.length == 0 && this.q6o.length == 0 ? false : true;
+    },
+    surveyQ9isValid(){
+      if(this.q1 == 'no') return true;
+      return this.q9.length == 0 ? false : true;
+    },
 
     passwordComplixty(){
       if(this.password.length == 0) return{ percentage :  0 , status : 'exception' } ;
@@ -492,7 +539,6 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
 
     $(document).ready(function(){
       $($('body').find('.tooltipped')).tooltip({delay : 50});
-
 
       $(window).resize(function(){
         vm.windowWidth = $(window).width();
@@ -596,6 +642,17 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
   methods: {
     asset(url){
       return LaravelOrgin + url;
+    },
+    addSocialNetwork(){
+      if(this.q6o.indexOf(this.q6i) == -1){
+        this.q6o.push(this.q6i)
+      }else{
+        this.elementNotify({title : 'Failed' , msg : 'You have already added '+this.q6i+' once.'});
+      }
+    },
+    logout(){
+      this.elementNotify({title : 'Logged out' , msg : 'See you again, Bye! '});
+        setTimeout(()=>{ window.location.href = LaravelOrgin+'user/logout' },1500);
     },
     coverExtended(){
        return this.asset('media/cover/'+UserId);
@@ -850,6 +907,11 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
         window.location.href = LaravelOrgin + 'home' ;
       } , 2000);
     },
+    submitSurvey(){
+      
+      this.stageSwitch(5);
+      this.elementCategoryNotify({ type : 'success' , msg : 'Thanks for your time', title : 'Success' });
+    },
     slideShowTrigger(){
       if(this.sessionType != 'guest') return;
       setInterval( ()=>{
@@ -861,6 +923,9 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
     stageIcon(stage , icon){
       return this.stageNumber < stage ? ' '+icon+' knocks_text_light knocks_icon' : ' '+icon+' knocks_text_success knocks_icon' ; 
     },
+    stageIconDark(stage , icon){
+      return this.stageNumber < stage ? ' '+icon+' knocks_text_dark knocks_icon' : ' '+icon+' knocks_text_success knocks_icon' ; 
+    },
     unboundSinstive(){
       this.sinstiveTrigger = false ;
     },
@@ -868,7 +933,8 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
       this.sinstiveTrigger = true ;
     },
     stageSwitch(stage){
-      this.stageNumber = (stage)
+      this.stageNumber = (stage);
+      $('body , html').animate({scrollTop : 0} , 'slow');
     },
     triggerStages(){
       this.errorStack = {};

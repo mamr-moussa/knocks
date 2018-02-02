@@ -1,6 +1,6 @@
 <template>
-  <button class=" " :id = "gid"
-  :class = "[lang_alignment, {'disabled animated pulse': isLoading} , button_classes]" @click = "construct()">
+  <button class=" " :id = "gid" @mouseover = "isHovered = true" @mouseleave = "isHovered = false"
+  :class = "buttonClasses" @click = "construct()">
     <i class="material-icons" :class = "[icon , {right: !disable_placeholder && align == 'right'} , 
     {left: !disable_placeholder && align == 'left'} , {center : disable_placeholder}]" v-if="!isLoading"></i>
     <knocksloader size = "small" v-if="isLoading"></knocksloader>
@@ -102,6 +102,10 @@ export default {
       type : String ,
       default : 'animated rubberBand'
     },
+    leave_class : {
+      type : String , 
+      default : 'animated bounce'
+    },
     validation_error : {
       type : String ,
       default : ''
@@ -117,7 +121,20 @@ export default {
     materialize_feedback : {
       type : Boolean , 
       default : true 
+    },
+    computed_response : {
+      type : Boolean , 
+      default : false
+    },
+    preconition : {
+      type : Boolean , 
+      default : null
+    },
+    disabled : {
+      type : Boolean , 
+      default : false ,
     }
+
 
   } ,
   data : function(){
@@ -125,6 +142,21 @@ export default {
       lang_alignment : document.querySelector('meta[name="lang_alignment"]').getAttribute('content') ,
       errorsStack : [],
       isLoading : false ,
+      isHovered : false ,
+    }
+  },
+  computed : {
+    buttonClasses(){
+      let array = [];
+      array.push(this.lang_alignment);
+      if(this.isLoading) array.push('disabled animated pulse');
+      if(this.isHovered) array.push(this.hover_class);
+      else array.push(this.leave_class);
+      array.push(this.button_classes);
+      if(this.disabled) array.push('disabled');
+      return array;
+
+      // [lang_alignment, {'disabled animated pulse': isLoading} , {hover_class , isHovered} ,{ 'disabled' : disabled } , button_classes]
     }
   },
   mounted(){
@@ -162,22 +194,22 @@ export default {
            }
           });
 
-    $('#'+this.gid).hover(function(){
-      $($(this).find('span')).addClass(vm.hover_class);
-      $(this).addClass(vm.hover_class);
-    });
-    $('#'+this.gid).mouseleave(function(){
-      $($(this).find('span')).removeClass(vm.hover_class);
-       $(this).removeClass(vm.hover_class);
-    });
+    // $('#'+this.gid).hover(function(){
+    //   $($(this).find('span')).addClass(vm.hover_class);
+    //   $(this).addClass(vm.hover_class);
+    // });
+    // $('#'+this.gid).mouseleave(function(){
+    //   $($(this).find('span')).removeClass(vm.hover_class);
+    //    $(this).removeClass(vm.hover_class);
+    // });
   },
   methods:{
     construct(){
-      this.$emit('knocks_button_clicked');
+      this.$emit('knocks_button_clicked' , this.scope);
       if(!this.validate) return;
       this.errorsStack = [],
       App.$emit('knocks_submit' , this.scope);
-      if(this.errorsStack.length == 0){
+      if(this.errorsStack.length == 0 && (this.preconition == true || this.preconition == null)){
         this.$emit('knocks_stack_passed');
         if(this.submit_flag)
            if(this.submit_on == null){

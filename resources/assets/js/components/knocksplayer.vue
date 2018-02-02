@@ -1,11 +1,11 @@
 <template>
 
-	<div @mouseover = "interest = true">
+  <div @mouseover = "interest = true">
 
-		<audio :id = "gid"  :src="playerSource"  @ended = "resetToOrgin()" controls 
-		@loadedmetadata="getRunTime()" @loadeddata="canBePlayed(true)" @waiting="canBePlayed(false)" v-if = "interest && supportedType" style = "display : none"></audio>
-		<div :class = "main_container">
-			<div :class="buttons_container">
+    <audio :id = "gid"  :src="playerSource"  @ended = "resetToOrgin()" controls 
+    @loadedmetadata="getRunTime()" @loadeddata="canBePlayed(true)" @waiting="canBePlayed(false)" v-if = "interest && supportedType" style = "display : none"></audio>
+    <div :class = "main_container">
+      <div :class="buttons_container">
         <el-popover
           ref="playpo"
           placement="bottom"
@@ -13,34 +13,34 @@
           <span v-if="!supportedType">Voice notes are not supported by your browser</span>
           <span v-if = "supportedType">Play/Pause</span>
         </el-popover>
-			   <el-button v-popover:playpo :class = "playingButtonClasses"  @click = "construct($event)" :loading = "loadingState" :disabled = "!supportedType">
+         <el-button v-popover:playpo :class = "playingButtonClasses"  @click = "construct($event)" :loading = "loadingState" :disabled = "!supportedType">
             <!-- <knocksloader :gid = "gid+'_loader'" v-if = "isLoading"></knocksloader> -->
-		 	      <span :class = "playingContentClasses"></span>
-		     </el-button>
-			</div>
-			<div :class = "sniper_container">
+            <span :class = "playingContentClasses"></span>
+         </el-button>
+      </div>
+      <div :class = "sniper_container" v-if="!hide_sniper">
         <!-- <el-slider v-model="sniper" :format-tooltip="displayTimeF" @input="updateTime()"></el-slider> -->
-				<input type="range"  min="0" max="100" v-model = "sniper" @input="updateTime()" />
-			</div>
-			<div  :class = "[timer_classes , timer_container]" v-if = "show_timer">
-				<span>{{displayTime}}</span>
-			</div>
-		</div>
-		<div :class = "options_container" v-if = "show_options">
-			<div  :class = "[runtime_classes, runtime_container]" v-if = "show_runtime">
-				<span v-if = "displayRunTime != 'Invalid date'">{{displayRunTime}}</span>
-			</div>
-			<div :class = "volume_container" v-if = "show_volume">
-				<div :class = "volume_icon_grid">
-					<span :class = "volumeIcon"></span>
-				</div>
-				<div :class = "volume_sniper_container">
+        <input type="range"  min="0" max="100" v-model = "sniper" @input="updateTime()" />
+      </div>
+      <div  :class = "[timer_classes , timer_container]" v-if = "show_timer">
+        <span>{{displayTime}}</span>
+      </div>
+    </div>
+    <div :class = "options_container" v-if = "show_options">
+      <div  :class = "[runtime_classes, runtime_container]" v-if = "show_runtime">
+        <span v-if = "displayRunTime != 'Invalid date'">{{displayRunTime}}</span>
+      </div>
+      <div :class = "volume_container" v-if = "show_volume">
+        <div :class = "volume_icon_grid">
+          <span :class = "volumeIcon"></span>
+        </div>
+        <div :class = "volume_sniper_container">
            <el-slider v-model="volume" @input="updateVolume()"></el-slider>
-					<!-- <input type="range"  min="0" max="100" v-model = "volume" @input="updateVolume()" /> -->
-				</div>
-			</div>
-		</div>
-	</div>
+          <!-- <input type="range"  min="0" max="100" v-model = "volume" @input="updateVolume()" /> -->
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -48,54 +48,54 @@ export default {
 
   name: 'knocksplayer',
   props : {
-  	source : {
-  		type : String ,
+    source : {
+      type : String ,
       default : null
-  	},
-  	initial_class : {
-  		type :String ,
-  		default : 'btn btn-floating knocks_tiny_floating_btn knocks_color_kit knocks_btn_color_kit right'
-  	},
-  	play_class : {
-  		type :String ,
-  		default : 'animated flipInX'
-  	},
-  	pause_class : {
-  		type :String ,
-  		default : 'animated flipInY'
-  	},
-  	icon_play_class : {
-  		type :String ,
-  		default : 'knocks-play5 animated jello'
-  	},
-  	icon_pause_class : {
-  		type :String ,
-  		default : 'knocks-pause4 animated rubberBand'
-  	},
-  	volume_off_class : {
-  		type : String ,
-  		default : 'knocks-volume8 knocks_text_dark knocks_text right knocks_text_md animated flipInY'
-  	},
-  	volume_low_class : {
-  		type : String ,
-  		default : 'knocks-volume6 knocks_text_dark right knocks_text_md animated jello'
-  	},
-  	volume_high_class : {
-  		type : String ,
-  		default : 'knocks-volume7 knocks_text_dark_active right knocks_text_md animated rubberBand'
-  	},
-  	timer_classes : {
-  		type : String ,
-  		default : 'knocks_text_right knocks_text_dark_active'
-  	},
-  	runtime_classes : {
-  		type : String ,
-  		default : 'knocks_text_right knocks_text_dark knocks_tinny_top_margin'
-  	},
-  	duration : {
-  		type : Number ,
-  		default : 0 ,
-  	},
+    },
+    initial_class : {
+      type :String ,
+      default : 'btn btn-floating knocks_tiny_floating_btn knocks_color_kit knocks_btn_color_kit right'
+    },
+    play_class : {
+      type :String ,
+      default : 'animated flipInX'
+    },
+    pause_class : {
+      type :String ,
+      default : 'animated flipInY'
+    },
+    icon_play_class : {
+      type :String ,
+      default : 'knocks-play5 animated jello'
+    },
+    icon_pause_class : {
+      type :String ,
+      default : 'knocks-pause4 animated rubberBand'
+    },
+    volume_off_class : {
+      type : String ,
+      default : 'knocks-volume8 knocks_text_dark knocks_text right knocks_text_md animated flipInY'
+    },
+    volume_low_class : {
+      type : String ,
+      default : 'knocks-volume6 knocks_text_dark right knocks_text_md animated jello'
+    },
+    volume_high_class : {
+      type : String ,
+      default : 'knocks-volume7 knocks_text_dark_active right knocks_text_md animated rubberBand'
+    },
+    timer_classes : {
+      type : String ,
+      default : 'knocks_text_right knocks_text_dark_active'
+    },
+    runtime_classes : {
+      type : String ,
+      default : 'knocks_text_right knocks_text_dark knocks_tinny_top_margin'
+    },
+    duration : {
+      type : Number ,
+      default : 0 ,
+    },
     live : {
       type : Boolean ,
       default : false 
@@ -156,6 +156,10 @@ export default {
       type : Boolean , 
       default : true
     },
+    hide_sniper:{
+        type : Boolean,
+        default : false
+    },
     volume_container : {
       type : String , 
       default : 'col s5 push-s3'
@@ -179,18 +183,22 @@ export default {
     full_back_loading : {
       type : Boolean , 
       default : false ,
-    }
+    },
+    not_webm:{
+      type : Boolean , 
+      default : false 
+  }
     
 
 
   },
   data () {
     return {
-    	sniper : 0,
-    	runTime : 0 ,
-    	playing : false ,
-    	timer : 0 ,
-    	volume : 70 ,
+      sniper : 0,
+      runTime : 0 ,
+      playing : false ,
+      timer : 0 ,
+      volume : 70 ,
       liveDuration : null ,
       loadingDone : false ,
       isLoading : false ,
@@ -202,84 +210,90 @@ export default {
     }
   } ,
   computed : {
-  	currentTime(){
-  		return document.getElementById(this.gid).currentTime;
-  	},
+    currentTime(){
+      return document.getElementById(this.gid).currentTime;
+    },
     loadingState(){
       return !this.canBePlayed || this.metaLoading ? true : false;
     },
-  	playingButtonClasses(){
-  		let classArray = [];
-  		classArray.push(this.initial_class);
-  		if(this.playing) classArray.push(this.play_class);
-  		if(!this.playing) classArray.push(this.pause_class);
-  		return classArray;
-  	},
-  	playingContentClasses(){
-  		let classArray = [];
-  		if(!this.playing) classArray.push(this.icon_play_class);
-  		if(this.playing) classArray.push(this.icon_pause_class);
-  		return classArray;
-  	},
-  	displayTime(){
-  		 return this.secondsToHms(parseInt(this.timer));
-  	},
-  	displayRunTime(){
-  		return moment(this.runTime ).format('m:ss');
-  	},
-  	volumeIcon(){
-  		if(this.volume > 70) return this.volume_high_class;
-  		if(this.volume > 0) return this.volume_low_class;
-  		return this.volume_off_class;
-  	},
+    playingButtonClasses(){
+      let classArray = [];
+      classArray.push(this.initial_class);
+      if(this.playing) classArray.push(this.play_class);
+      if(!this.playing) classArray.push(this.pause_class);
+      return classArray;
+    },
+    playingContentClasses(){
+      let classArray = [];
+      if(!this.playing) classArray.push(this.icon_play_class);
+      if(this.playing) classArray.push(this.icon_pause_class);
+      return classArray;
+    },
+    displayTime(){
+       return this.secondsToHms(parseInt(this.timer));
+    },
+    displayRunTime(){
+      return moment(this.runTime ).format('m:ss');
+    },
+    volumeIcon(){
+      if(this.volume > 70) return this.volume_high_class;
+      if(this.volume > 0) return this.volume_low_class;
+      return this.volume_off_class;
+    },
     playerSource(){
       if(this.full_back_loading) 
         return LaravelOrgin+'media/record/retrive/'+this.specifications.id;
       else return !this.live ? this.source : null ; 
 
     }
-  	
+    
   } , 
   mounted(){
-  	const vm = this;
+    const vm = this;
     var testElement = document.createElement('audio');
+    
     this.supportedType = !!(testElement.canPlayType && testElement.canPlayType('audio/webm;').replace(/no/, ''));
+    App.$on('knocksGlobalPlayerRequested' , (payloads)=>{
+      if(vm.gid != payloads && vm.playing){
+        vm.playing = false ;
+        vm.pauseRecord();
+      }
+    });
+    App.$on('runningRecord' , ()=>{
+      if(vm.playing){
+        vm.pauseRecord();
+        vm.playing = false ;
+        vm.sniper = 0;
+        vm.timer = 0;
+      }
+    });
+    App.$on('recordFinished' , ()=>{
+      //vm.runTime = document.getElementById('ele').duration;
+    })
+    this.$on('playingRecord' , ()=>{
 
-  	App.$on('runningRecord' , ()=>{
-  		if(vm.playing){
-  			vm.pauseRecord();
-  			vm.playing = false ;
-  			vm.sniper = 0;
-  			vm.timer = 0;
-  		}
-  	});
-  	App.$on('recordFinished' , ()=>{
-  		//vm.runTime = document.getElementById('ele').duration;
-  	})
-  	this.$on('playingRecord' , ()=>{
-
-  		let interval = setInterval( ()=> {
-  			if(document.getElementById(vm.gid) != null){
-  			  if(vm.playing && document.getElementById(vm.gid) ){
-	  			vm.timer = document.getElementById(vm.gid).currentTime;		
-	  			if(vm.timer >= vm.runTime){
-	  				vm.timer = vm.runTime;
-	  				vm.playing = false;
-	  				vm.sniper = 100;
-	  				clearInterval(interval);
-	  				return ;
-	  			}
-	  			vm.sniper = (vm.timer / vm.runTime * 100) * 1000;
+      let interval = setInterval( ()=> {
+        if(document.getElementById(vm.gid) != null){
+          if(vm.playing && document.getElementById(vm.gid) ){
+          vm.timer = document.getElementById(vm.gid).currentTime;   
+          if(vm.timer >= vm.runTime){
+            vm.timer = vm.runTime;
+            vm.playing = false;
+            vm.sniper = 100;
+            clearInterval(interval);
+            return ;
+          }
+          vm.sniper = (vm.timer / vm.runTime * 100) * 1000;
       
-	  			}else{
-	  				clearInterval(interval);
-	  			}
-  			}else{
-  				clearInterval(interval);
-  			}
-  			
-  		},10);
-  	});
+          }else{
+            clearInterval(interval);
+          }
+        }else{
+          clearInterval(interval);
+        }
+        
+      },10);
+    });
 
 
     //Getting the live tracks
@@ -292,23 +306,24 @@ export default {
     });
   },
   methods : {
-  	getRunTime(){
+    getRunTime(){
       if(this.full_back_loading) { this.runTime = this.liveDuration; return; }
       if(!this.live)
-  		this.runTime = this.duration;
+      this.runTime = this.duration;
       
-  	},
-  	construct(event){
+    },
+    construct(event){
       console.log('PLAYING RECORD');
-  		if(!this.playing){
+      if(!this.playing){
         if(!this.playable) return;
-  			this.playing = true ;
-  			this.playRecord();
-  		}else{
-  			this.playing = false ;
-  			this.pauseRecord();
-  		}
-  	},
+        this.playing = true ;
+        App.$emit('knocksGlobalPlayerRequested' , this.gid);
+        this.playRecord();
+      }else{
+        this.playing = false ;
+        this.pauseRecord();
+      }
+    },
   handleLive(){
     const vp = this;
     if(this.live && !this.load_on_mount && !this.loadedOnce){
@@ -325,7 +340,7 @@ export default {
     this.playable = state;
     this.isLoading = !state;
   },
-	playRecord(){
+  playRecord(){
 
     if(this.runTime == 0){
       let interval = setInterval( ()=>{
@@ -338,39 +353,39 @@ export default {
       this.handleLive();
       return ;
     }
-		let audioTag = document.getElementById(this.gid);
-		//this.runTime = audioTag.duration;
-		this.$emit('playingRecord');
-		let res = () =>{
-			//audioTag.currentTime = audioTag.currentTime;
-			if(!(audioTag.currentTime > 0 && !audioTag.paused && !audioTag.ended && audioTag.readyState > 2) )
+    let audioTag = document.getElementById(this.gid);
+    //this.runTime = audioTag.duration;
+    this.$emit('playingRecord');
+    let res = () =>{
+      //audioTag.currentTime = audioTag.currentTime;
+      if(!(audioTag.currentTime > 0 && !audioTag.paused && !audioTag.ended && audioTag.readyState > 2) )
         audioTag.play();
-		}
-		res();
-		  window.setTimeout(() => audioTag.pause(), 25);
-		  window.setTimeout(res, 50);
-	},
-	pauseRecord(){
-		let audioTag = document.getElementById(this.gid);
-		audioTag.pause();
-	},
-	updateTime(){
-		let audioTag = document.getElementById(this.gid);
-		audioTag.currentTime = ( (this.sniper / 100) * this.runTime/1000 ) ;
-		this.timer = ( (this.sniper / 100) * this.runTime / 1000 ) ;
-		$('.thumb').css({'display': 'none'});
-	},
-	updateVolume(){
-		document.getElementById(this.gid).volume = this.volume/100;
-		$('.thumb').css({'display': 'none'});
-	},
-	resetToOrgin(){
-		console.log('reset');
-		this.sniper = 0;
-		this.timer = 0;
-		document.getElementById(this.gid).currentTime = 0;
-		this.playing = false;
-	} , 
+    }
+    res();
+      window.setTimeout(() => audioTag.pause(), 25);
+      window.setTimeout(res, 50);
+  },
+  pauseRecord(){
+    let audioTag = document.getElementById(this.gid);
+    audioTag.pause();
+  },
+  updateTime(){
+    let audioTag = document.getElementById(this.gid);
+    audioTag.currentTime = ( (this.sniper / 100) * this.runTime/1000 ) ;
+    this.timer = ( (this.sniper / 100) * this.runTime / 1000 ) ;
+    $('.thumb').css({'display': 'none'});
+  },
+  updateVolume(){
+    document.getElementById(this.gid).volume = this.volume/100;
+    $('.thumb').css({'display': 'none'});
+  },
+  resetToOrgin(){
+    console.log('reset');
+    this.sniper = 0;
+    this.timer = 0;
+    document.getElementById(this.gid).currentTime = 0;
+    this.playing = false;
+  } , 
   secondsToHms(d) {
     d = Number(d);
 
@@ -452,6 +467,6 @@ export default {
 
 <style lang="css" scoped>
 .thumb{
-	display: none !important;
+  display: none !important;
 }
 </style>
