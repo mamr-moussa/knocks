@@ -455,7 +455,12 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
 
 
   computed: {
-
+    formateMySqlDate(){
+      return moment(this.birthdate).format('YYYY-MM-DD');
+    },
+    hasDate(){
+      return this.birthdate.length == 0 ? false : true;
+    },
     surveyStepOneValid(){
       return this.surveyQ2isValid && this.surveyQ6isValid && this.surveyQ9isValid ? true : false;
     },
