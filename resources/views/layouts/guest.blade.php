@@ -19,7 +19,7 @@
     <meta name="user" content="-1">
     <meta name="session-type" content="guest">
     <meta name="description" content="Knock, KnocksApp,knocks, knocksapp">
-    <meta name="keywords" content="Knocks , KnocksApp , Who's There , Social Media , knocksapp ">
+    <meta name="keywords" content="Knocks, Reimagining The Social Media ">
     <meta name="author" content="Knocks App">
     <link rel = "stylesheet" href = {{asset('css/app.css')}}  />
     @yield('externals')
