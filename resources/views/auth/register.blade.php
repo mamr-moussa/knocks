@@ -39,7 +39,7 @@ opacity: 0 !important;
                 <span class = "knocks-knocks knocks_text_light"></span>
                 <static_message msg = "Welcome To Knocks" classes = "knocks_text_light "></static_message>
                 <hr class="uk-divider-icon">
-                <static_message msg = "Comming Soon" classes = "knocks_text_light "></static_message>
+                <static_message msg = "Coming Soon" classes = "knocks_text_light "></static_message>
               </h1>
 
               <div class = "">
@@ -195,7 +195,7 @@ opacity: 0 !important;
                     label_classes = "knocks_text_sm"
                     success_msg= "Login Succesfull!"
                     :scope = "['login']"
-                    :validation_error = "getTranslation('There\'s some feilds we need you to complete it.')"
+                    validation_error = "There's some fields we need you to complete it)"
                     :connection_error = "getTranslation('There\'s a problem in your connection, please try again.')"
                     :submit_data = "{ q : username_login ,pw : password_login ,}"></knocksbutton>
                     </div>
@@ -298,7 +298,7 @@ opacity: 0 !important;
                     button_classes = "waves-effect waves-light btn knocks_btn_light knocks_color_kit_light knocks_text_md col s5 "
                     :scope = "['stage_one']"
                     label_classes="knocks_text_sm"
-                    :validation_error = "getTranslation('There\'s some feilds we need you to complete it.')">
+                    validation_error = "There're some fields we need you to complete it.">
                     </knocksbutton>
                     </div>
 
@@ -311,7 +311,7 @@ opacity: 0 !important;
 
                     <!--Stage Two-->
                     <div class = "row animated zoomIn" :class = "{'knocks_hidden' :stageNumber != 2}">
-                    <knocksdatepicker
+        {{--            <knocksdatepicker
                     id = "birthdate"
                     icon = "knocks-birthday-cake knocks_text_light"
                     label_class = "knocks_text_light"
@@ -325,7 +325,23 @@ opacity: 0 !important;
                     error_class = "knocks_input_light_error animated shake"
                     :scope = "['registeration','stage_two']"
                     icon_error = "red-text text-lighten-1"
-                    ></knocksdatepicker>
+                    ></knocksdatepicker> --}}
+
+                      <div class="row">
+                        <div class = "col">
+                            <span class = "knocks-birthday-cake knocks_text_light"></span>
+                            <span class = "knocks_text_light ">Birthdate</span> 
+                        </div>
+                        <div class = "col ">
+                                
+    <el-date-picker
+    
+      v-model="birthdate"
+      type="date"
+      placeholder="Pick a day">
+    </el-date-picker>
+                        </div>
+  </div>
 
                     <div class = "col s4 l3">
                         <span class = "knocks-male2 knocks_text_light knocks_text_ms"></span>
@@ -354,20 +370,20 @@ opacity: 0 !important;
                     label_classes = "knocks_text_sm"
                     button_classes = "waves-effect waves-light btn knocks_btn_light knocks_color_kit_light knocks_text_md knocks_fair_bounds col s5"
                     :scope = "['stage_two']"
-                    :validation_error = "getTranslation('There\'s some feilds we need you to complete it.')">
+                    validation_error = "There're some fields we need you to complete it.">
                     </knocksbutton>
 
                     <knocksbutton
                     placeholder = "Next"
                     @knocks_stack_passed = "stageSwitch(3)"
-                    
+                    :disabled = "!hasDate"
                     :submit_flag = "false"
                     success_at = "done"
                     gid = "stage_one_next"
                     label_classes = "knocks_text_sm"
                     button_classes = "waves-effect waves-light btn knocks_btn_light knocks_color_kit_light knocks_text_md knocks_fair_bounds col s5 push-s1"
                     :scope = "['stage_two']"
-                    :validation_error = "getTranslation('There\'s some feilds we need you to complete it.')">
+                    validation_error = "There're some fields we need you to complete it.">
                     </knocksbutton>
 
                     </center>
@@ -452,7 +468,7 @@ opacity: 0 !important;
                     label_classes = "knocks_text_sm"
                     button_classes = "waves-effect waves-light btn knocks_btn_light knocks_color_kit_light knocks_text_md knocks_fair_bounds col s5"
                     :scope = "['stage_three']"
-                    validation_error = "There's some feilds we need you to complete it.">
+                    validation_error = "There're some fields we need you to complete.">
                     </knocksbutton>
 
                     <knocksbutton
@@ -465,7 +481,7 @@ opacity: 0 !important;
                     button_classes = "waves-effect waves-light btn knocks_btn_light knocks_color_kit_light knocks_text_md knocks_fair_bounds col s5 push-s1"
                     :scope = "['stage_three']"
                     label_classes = "knocks_text_sm"
-                    :validation_error = "getTranslation('There\'s some feilds we need you to complete it.')">
+                    validation_error = "There're some fields we need you to complete it.">
                     </knocksbutton>
                     </div>
 
@@ -531,7 +547,7 @@ opacity: 0 !important;
                     label_classes = "knocks_text_sm"
                     gid = "stage_one_next"
                     button_classes = "waves-effect waves-light btn knocks_btn_light knocks_color_kit_light knocks_text_md knocks_fair_bounds col s5"
-                    :validation_error = "getTranslation('There\'s some feilds we need you to complete it.')">
+                    validation_error = "There're some fields we need you to complete it.">
                     </knocksbutton>
                     <knocksbutton
                     placeholder = "Register"
@@ -546,7 +562,7 @@ opacity: 0 !important;
                     @knocks_submit_accepted = "logInUser()"
                     success_msg= "YESSS"
                     :scope = "['registeration']"
-                    :validation_error = "getTranslation('There\'s some feilds we need you to complete it.')"
+                    validation_error = "There's some fields we need you to complete it)"
                     :connection_error = "getTranslation('There\'s a problem in your connection, please try again.')"
                     :submit_data = "{
                     first_name : first_name ,
@@ -556,7 +572,7 @@ opacity: 0 !important;
                     username : username ,
                     email : email ,
                     gender : gender ,
-                    birthdate : birthdate ,
+                    birthdate : formateMySqlDate ,
                     password : password ,
                     language : 'en'
                     }"></knocksbutton>

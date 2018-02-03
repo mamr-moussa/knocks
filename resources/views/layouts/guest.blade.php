@@ -18,7 +18,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="user" content="-1">
     <meta name="session-type" content="guest">
-    <meta name="description" content="Knock, KnocksApp,knocks, knocksapp">
+    <meta name="description" content="Knocks">
     <meta name="keywords" content="Knocks , KnocksApp , Who's There , Social Media , knocksapp ">
     <meta name="author" content="Knocks App">
     <link rel = "stylesheet" href = {{asset('css/app.css')}}  />

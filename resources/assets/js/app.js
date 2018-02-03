@@ -391,6 +391,7 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
     nickname : '' ,
     username : '' , 
     birthdate : '' ,
+    birthdateIsFired: false , 
     gender : '' ,
     email : '' ,
     password : '' ,
@@ -455,7 +456,21 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
 
 
   computed: {
+    formateMySqlDate(){
+      return moment(this.birthdate).format('YYYY-MM-DD');
+    },
+    hasDate(){
+      return this.birthdate.length == 0 ? false : true;
+    },
+    validDate(){
+      if(!this.hasDate) return false ;
+      if(this.formateMySqlDate == 'Invalid date') return false ; 
+      let year = parseInt(moment(this.formateMySqlDate).format('YYYY'));
+      let currentYear = parseInt(moment().format('YYYY'));
+      if(currentYear - year < 5) return false ;
+      return true;
 
+    },
     surveyStepOneValid(){
       return this.surveyQ2isValid && this.surveyQ6isValid && this.surveyQ9isValid ? true : false;
     },

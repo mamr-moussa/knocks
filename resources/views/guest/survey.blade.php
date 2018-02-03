@@ -315,7 +315,7 @@
 	<div class = "row" v-if = "q1 == 'yes'">
 		<div class="row">
 			<span class = "knocks_text_dark knocks_text_ms">
-			Please select all the social networks for which you have created a personal profile.
+			How do you access your social network account?
 		</span>
 		</div>
 		<div class = "row">
@@ -520,7 +520,7 @@
 		    </p>
 		    <p>
 		      <input name="q13" v-model = "q13" value = "3" type="radio" id="q13a3" />
-		      <label class="knocks_text_dark_active" for="q12a3">Fair</label>
+		      <label class="knocks_text_dark_active" for="q13a3">Fair</label>
 		    </p>
 		     <p>
 		      <input name="q13" v-model = "q13" value = "4" type="radio" id="q13a4" />
