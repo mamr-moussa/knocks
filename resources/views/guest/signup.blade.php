@@ -332,6 +332,7 @@ opacity: 0 !important;
 					  		<span class = "knocks-birthday-cake knocks_text_light"></span>
 					  		<span class = "knocks_text_light ">Birthdate</span> 
 					  	</div>
+<<<<<<< HEAD
 					  	<div class = "col ">				  		    
                             <el-date-picker 
                               v-model="birthdate"
@@ -345,6 +346,18 @@ opacity: 0 !important;
                             </p>
 					  	</div>
                       </div>
+=======
+					  	<div class = "col ">
+					  		    
+    <el-date-picker
+    
+      v-model="birthdate"
+      type="date"
+      placeholder="Pick a day">
+    </el-date-picker>
+					  	</div>
+  </div>
+>>>>>>> 347bd2315a0f60f38a7e0460d2b48705fee0d5b5
 
 					<div class = "col s4 l3">
 						<span class = "knocks-male2 knocks_text_light knocks_text_ms"></span>
@@ -380,7 +393,11 @@ opacity: 0 !important;
 					<knocksbutton
 					placeholder = "Next"
 					@knocks_stack_passed = "stageSwitch(3)"
+<<<<<<< HEAD
 					:preconition = "validDate"
+=======
+					:disabled = "!hasDate"
+>>>>>>> 347bd2315a0f60f38a7e0460d2b48705fee0d5b5
 					:submit_flag = "false"
 					success_at = "done"
 					gid = "stage_one_next"

@@ -18,8 +18,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="user" content="-1">
     <meta name="session-type" content="guest">
+<<<<<<< HEAD
     <meta name="description" content="Knocks">
     <meta name="keywords" content="Knocks , KnocksApp , Who's There , Social Media , knocksapp ">
+=======
+    <meta name="description" content="Knocks, Reimagining The Social Media ">
+    <meta name="keywords" content="Knock, KnocksApp,knocks, knocksapp, who's there! , survey">
+>>>>>>> 347bd2315a0f60f38a7e0460d2b48705fee0d5b5
     <meta name="author" content="Knocks App">
     <link rel = "stylesheet" href = {{asset('css/app.css')}}  />
     @yield('externals')
