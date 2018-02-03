@@ -126,7 +126,7 @@ export default {
       type : Boolean , 
       default : false
     },
-    preconition : {
+    precondition : {
       type : Boolean , 
       default : null
     },
@@ -209,7 +209,7 @@ export default {
       if(!this.validate) return;
       this.errorsStack = [],
       App.$emit('knocks_submit' , this.scope);
-      if(this.errorsStack.length == 0 && (this.preconition == true || this.preconition == null)){
+      if(this.errorsStack.length == 0 && (this.precondition == true || this.precondition == null)){
         this.$emit('knocks_stack_passed');
         if(this.submit_flag)
            if(this.submit_on == null){

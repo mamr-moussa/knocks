@@ -462,7 +462,7 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
     hasDate(){
       return this.birthdate.length == 0 ? false : true;
     },
-<<<<<<< HEAD
+
     validDate(){
       if(!this.hasDate) return false ;
       if(this.formateMySqlDate == 'Invalid date') return false ; 
@@ -472,8 +472,7 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
       return true;
 
     },
-=======
->>>>>>> 347bd2315a0f60f38a7e0460d2b48705fee0d5b5
+
     surveyStepOneValid(){
       return this.surveyQ2isValid && this.surveyQ6isValid && this.surveyQ9isValid ? true : false;
     },
