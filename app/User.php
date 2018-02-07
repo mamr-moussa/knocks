@@ -38,6 +38,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Comment', 'user_id');
     }
+    public function answer()
+    {
+        return $this->hasOne('App\Answer', 'user_id');
+    }
 
     public function knocks()
     {

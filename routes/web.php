@@ -226,9 +226,15 @@ Route::get('/home', 'UserController@goHome' );
 //Developers routes
 
 //Language APIS
-// Route::get('/dev' , function(){
-//   return view('test.home');
-// });
+Route::get('/dev' , function(){
+  return view('test.home');
+});
+
+Route::get('faq/survey/analysis' , function(){
+  return view('guest.survey_analysis');
+});
+
+Route::post('answers/patch' , 'AnswerController@patch');
 
 
 /*
@@ -376,6 +382,8 @@ Route::group(['middleware' => 'auth'] , function(){
       return view('guest.survey');
     else return view('guest.candy_survey');
 });
+
+  Route::post('user/answers' , 'AnswerController@userAnswers');
 
   Route::post('survey/submit' , 'AnswerController@create');
 

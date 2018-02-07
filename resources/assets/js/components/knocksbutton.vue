@@ -194,6 +194,10 @@ export default {
            }
           });
 
+          App.$on('knocksClearGlobalErrorStack' , ()=>{
+            vm.errorsStack = [];
+          });
+
     // $('#'+this.gid).hover(function(){
     //   $($(this).find('span')).addClass(vm.hover_class);
     //   $(this).addClass(vm.hover_class);

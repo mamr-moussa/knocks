@@ -16,7 +16,7 @@ export default {
   props : {
   	main_container : {
   		type : String , 
-  		default : 'row',
+  		default : 'row ',
   	},
   	options : {
   		type : Array , 
@@ -40,7 +40,7 @@ export default {
   	},
   	anchor_regular_class : {
   		type : String , 
-  		default : 'knocks_anchor_color_kit_light'
+  		default : 'knocks_anchor_color_kit_light knocks_sm_side_padding'
   	},
   	right_most_class : {
   		type : String , 
@@ -56,7 +56,7 @@ export default {
   	},
   	anchor_class : {
   		type : String , 
-  		default : 'btn knocks_border_color knocks_noshadow_ps'
+  		default : 'btn knocks_light_active_border knocks_noshadow_ps'
   	},
   	define_first: {
   		type : Boolean ,
@@ -110,7 +110,7 @@ export default {
   		return;
   		
   	}
-
+      const vm = this;
       App.$on('knocks_submit' , (scope)=>{
             if(scope != null){
               let i;

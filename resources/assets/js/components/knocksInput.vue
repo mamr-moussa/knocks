@@ -472,6 +472,7 @@
                 if(vm.scope.indexOf(scope[i]) != -1){
                  vm.isFired = true;
                  App.$emit('knocks_input_status' , vm.isValid);
+                  console.log('ist ' + vm.gid +' '+ vm.isValid);
                  return;
                 }
               }
@@ -479,7 +480,7 @@
            }else if(scope == null && vm.scope == null){
             vm.isFired = true;
             App.$emit('knocks_input_status' , vm.isValid);
-            console.log('ist ' + vm.gid +' ' +vm.isValid);
+            console.log('ist ' + vm.gid );
            }
           });
           

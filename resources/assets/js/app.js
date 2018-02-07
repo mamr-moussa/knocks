@@ -281,6 +281,7 @@ Vue.component('knocksuserhigheducation', require('./components/knocksuserhighedu
 Vue.component('knocksuserhobby', require('./components/knocksuserhobby.vue'));
 Vue.component('knocksusersport', require('./components/knocksusersport.vue'));
 Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
+Vue.component('knocksretriver', require('./components/knocksretriver.vue'));
 
 
 
@@ -316,6 +317,10 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
     loadedUsers : {} ,
     //User Session Type 
     sessionType : document.querySelector('meta[name="session-type"]').getAttribute('content'),
+    //Current Address
+    currentHref : window.location.href ,
+    //Current Pathname
+    currentPathName : window.location.pathname,
 
     currentIndex : null ,
 
@@ -326,6 +331,7 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
     lastIndex  : null ,
     loadingKnocks : false ,
     balloonsLooper : true ,
+
    /* CORE DATA ENDS */
 
 
@@ -424,13 +430,13 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
     q2 : [] , 
     q2o : '' ,
     q3 : '3' ,
-    q4 : [0,10] ,
+    q4 : 10 ,
     q5 : '2' ,
     q6 : [] , 
     q6o : [] , 
     q6i : '' ,
-    q7 : [0,2] ,
-    q8 : [0,2] ,
+    q7 : 2 ,
+    q8 : 2 ,
     q9 : [] , 
     q10 : 'yes' , 
     q11 : '2' ,
@@ -448,6 +454,16 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
    qp : 'yes',
    harry : 1,
    fantastic : '',
+
+   //Survey Analysis
+
+   retrivedAnswers : null ,
+   lastAnswerUpdate : null ,
+   answersPatch : null ,
+   answersObject : {} ,
+   userAnswers : null ,
+   answersCorrected : false ,
+
 
     windowWidth : $(window).width(),
 
@@ -516,18 +532,9 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
     this.slideShowTrigger();
     this.profileIndex();
       const vm = this;
-      // this.errorsMessageBus[0] = this.getTranslation('This field is required.');
-      // this.errorsMessageBus[1] = this.getTranslation('This field expects a numeric value.');
-      // this.errorsMessageBus[2] = this.getTranslation('The maximum value for this field is');
-      // this.errorsMessageBus[3] = this.getTranslation('The minimum value for this field is');
-      // this.errorsMessageBus[4] = this.getTranslation("The maximum length for your value shouldn't pass");
-      // this.errorsMessageBus[5] = this.getTranslation('The minimum length for your value shouldn\'t be less than');
-      // this.errorsMessageBus[6] = this.getTranslation('This field expects another formula');
-      // this.errorsMessageBus[7] = this.getTranslation('This value is not available');
-      // this.errorsMessageBus[8] = this.getTranslation('This file type is not available.');
-      // this.errorsMessageBus[9] = this.getTranslation('This value should be the same as');
-      // window.ErrorMessageBus = this.errorsMessageBus;
-      // App.$emit('errorsMessageBusLoaded' , this.errorsMessageBus);
+
+      if(this.currentPathName == '/user/login' || this.currentPathName == '/user/logout'  )
+        this.loginStage = true;
 
       App.$on('refreshMatListeners' , function(){
         $($('body').find('.tooltipped')).tooltip({delay : 50});
@@ -536,9 +543,9 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
 
       this.getuserCircles();
 
-      this.getNotifications();
+      //this.getNotifications();
 
-
+      //sthis.answersPatch();
 
 
     
@@ -649,14 +656,85 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
 
 
    //Developers On Mount
-   this.collectLanguages();
-   this.collectMessages();
+   //this.collectLanguages();
+   //this.collectMessages();
   },
 
 
   //Methods
 
   methods: {
+    hashAnswers(){  
+     this.lastAnswerUpdate = this.retrivedAnswers.response.last_update;
+     if(this.retrivedAnswers.response.answers.length > 0){
+      this.answersPatch = this.retrivedAnswers.response.answers;
+      let i, j, k, l, m;
+      for(k in this.answersObject){
+        for(l in this.answersObject[k]){
+          this.answersObject[k][l] = 0
+        }
+      }
+      for(i in this.answersPatch){
+        for(j in this.answersPatch[i]){
+          if( this.answersObject[ j ] == undefined){
+            this.answersObject[j] = { total : 0 , 0 : 0 ,1 : 0 , 2 : 0 , 3 : 0 , 4 : 0 , 5 : 0 , 6 : 0};
+          }
+          if(Array.isArray(this.answersPatch[i][j])){
+            for(m in this.answersPatch[i][j]){
+              if(this.answersObject[j][this.answersPatch[i][j][m]] == undefined){
+                this.answersObject[j][this.answersPatch[i][j][m]] = 1;
+                this.answersObject[j].total++;
+              }else{
+                this.answersObject[j][this.answersPatch[i][j][m]]++;
+                this.answersObject[j].total++;
+              }
+            }
+          }else{
+            if(this.answersObject[j][this.answersPatch[i][j]] == undefined){
+              this.answersObject[j][this.answersPatch[i][j]] = 1;
+              this.answersObject[j].total++;
+            }else{
+              this.answersObject[j][this.answersPatch[i][j]]++;
+              this.answersObject[j].total++;
+            }
+          }
+        }
+      }
+
+     }
+    },
+    correctAnswers(){
+      if(this.userAnswers.response == 'no_answers'){
+        this.answersCorrected = false ;
+        return
+      }else{
+        this.answersCorrected = true;
+        if(this.userAnswers.response.age > 12){
+            this.q1 = this.userAnswers.response.answers.q1;
+            this.q2 = this.userAnswers.response.answers.q2;
+            this.q2o = this.userAnswers.response.answers.q20;
+            this.q3 = this.userAnswers.response.answers.q3;
+            this.q4 = this.userAnswers.response.answers.q4;
+            this.q5 = this.userAnswers.response.answers.q5;
+            this.q6 = this.userAnswers.response.answers.q6;
+            this.q6o = this.userAnswers.response.answers.q6o;
+            this.q6i = this.userAnswers.response.answers.q6i;
+            this.q7 = this.userAnswers.response.answers.q7;
+            this.q8 = this.userAnswers.response.answers.q8;
+            this.q9 = this.userAnswers.response.answers.q9;
+            this.q10 = this.userAnswers.response.answers.q10;
+            this.q11 = this.userAnswers.response.answers.q11;
+            this.q12 = this.userAnswers.response.answers.q12;
+            this.q13 = this.userAnswers.response.answers.q13;
+            this.q14 = this.userAnswers.response.answers.q14;
+            this.q15 = this.userAnswers.response.answers.q15;
+            this.q16 = this.userAnswers.response.answers.q16;
+            this.q17 = this.userAnswers.response.answers.q17;
+            this.q18 = this.userAnswers.response.answers.q18;
+            this.q19o = this.userAnswers.response.answers.q19o;
+        }
+      }
+    },
     asset(url){
       return LaravelOrgin + url;
     },
@@ -881,6 +959,7 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
     },
     clearErrorStack(){
       this.errorStack = {};
+      App.$emit('knocksClearGlobalErrorStack');
     },
     elementNotify(notificationObject) {
       this.$notify({
@@ -897,7 +976,8 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
       });
     },
     clearLowerTrigger(){
-      this.lowerTrigger = null
+      this.lowerTrigger = null;
+      // this.clearErrorStack();
     },
     generateElementString(elementObject){
       return $('<'+elementObject.name+' class = "'+ elementObject.classes+'" >'+elementObject.content+'</'+elementObject.name+'>').html();
@@ -957,6 +1037,7 @@ Vue.component('knocksuserabout', require('./components/knocksuserabout.vue'));
       this.errorStack = {};
       this.loginStage = !this.loginStage;
       this.stageNumber = 1;
+      //this.clearErrorStack();
     },
     getTranslationById(id){
         var translation = '';
@@ -1214,7 +1295,9 @@ window.NavInstance = new Vue({
   //     vm.showRightSideBar = false ;
   //   }
   // });
-  })
+  });
+
+
 
 
   $(document).on('focus' , '#sidebar_search_box > input' , function(){

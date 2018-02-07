@@ -87,7 +87,7 @@ background-color: #ee6e73 !important;
                     <h3 class = "center knocks_text_lmd knocks_language_default_font" v-if = "loginStage == null"><static_message class = "knocks_text_light" msg = "Welcome To Knocks"></static_message></h3>
                 </transition>
                 <transition  name="custom-classes-transition" enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
-                    <div v-if = "loginStage">
+                    <div :class = "[{'animated zoomIn' : loginStage} , {'knocks_hidden' : !loginStage}]">
                         <h2 class = "">
                         <span class = "knocks-knocks knocks_text_light"></span>
                         <static_message msg = "Welcome To Knocks" classes = "knocks_text_light "></static_message>
@@ -150,7 +150,7 @@ background-color: #ee6e73 !important;
                             success_msg= "Login Succesfull!"
                             :scope = "['login']"
                             validation_error = "There're some fields we need you to complete."
-                            :connection_error = "getTranslation('There\'s a problem in your connection, please try again.')"
+                            connection_error = "There's a problem in your connection, please try again."
                             :submit_data = "{ q : username_login ,pw : password_login ,}"></knocksbutton>
                         </div>
                         
@@ -160,7 +160,7 @@ background-color: #ee6e73 !important;
                 <transition  name="custom-classes-transition"
                     enter-active-class="animated slideInUp "
                     leave-active-class="animated zoomOut">
-                    <div v-if = "loginStage == false">
+                    <div :class = "[{'animated zoomIn' : loginStage == false} , {'knocks_hidden' : loginStage != false}]">
                         <h4 class = " knocks_text_lmd animated bounceInDown knocks_language_default_font">
                         <static_message classes ="knocks_text_light" msg = "We're happy to see you in Knocks."></static_message>
                         <a @click="triggerStages()" class = "knocks_fair_bounds knocks_pointer teal-text text-accent-4">
@@ -277,12 +277,11 @@ background-color: #ee6e73 !important;
                                     <span class = "knocks-female2 knocks_text_light knocks_text_ms"></span>
                                     <static_message msg = "Gender" classes = "knocks_text_ms"></static_message>
                                 </div>
-                                <div class = "col s12 l8 ">    
-                                    <el-radio-group v-model="gender">
-                                    <el-radio-button :label="getTranslation('Male')"></el-radio-button>
-                                    <el-radio-button :label="getTranslation('Female')"></el-radio-button>
-                                    <el-radio-button :label="getTranslation('Other')"></el-radio-button>
-                                    </el-radio-group>
+                                <div class = "col s12 l8 ">  
+                                <knockstaps :multiple = "false" 
+                                 v-model="gender"
+                                :options = "knocksTapsDevOptions" >
+                                  </knockstaps>  
                                 </div>
                                 <br/><br/>
                                 <center>
@@ -409,7 +408,7 @@ background-color: #ee6e73 !important;
                                 :scope = "['registeration']"
                                 :submit_scope = "['registeration']"
                                 regex = "^(?=.*[a-zA-Z])(?=.*[0-9])"
-                                :regex_example = "getTranslation('Your password should contain both charachters and numbers.')"
+                                regex_example = "Your password should contain both charachters and numbers."
                                 ></knocksinput>
                                 <el-progress :text-inside="false" :stroke-width="25"
                                 :percentage="passwordComplixty.percentage" :status="passwordComplixty.status">
@@ -463,7 +462,7 @@ background-color: #ee6e73 !important;
                                 success_msg= "YESSS"
                                 :scope = "['registeration']"
                                 validation_error = "There're some fields we need you to complete."
-                                :connection_error = "getTranslation('There\'s a problem in your connection, please try again.')"
+                                connection_error = "There's a problem in your connection, please try again."
                                 :submit_data = "{
                                 first_name : first_name ,
                                 last_name : last_name ,
@@ -478,11 +477,11 @@ background-color: #ee6e73 !important;
                                 }"></knocksbutton>
                             </div>
                             <el-steps :active="stageNumber">
-                            <el-step :title="getTranslation('Enter Your Name')"
+                            <el-step title="Enter Your Name"
                             :icon="stageIcon(1,'knocks-face-sunglasses2')"></el-step>
-                            <el-step :title="getTranslation('More Personal Data')" :icon="stageIcon(2,'knocks-face-glasses2')"></el-step>
-                            <el-step :title="getTranslation('Username And Phone')" :icon="stageIcon(3,'knocks-email3')"></el-step>
-                            <el-step :title="getTranslation('Protect Your Account')" :icon="stageIcon(4,'knocks-locked4')"></el-step>
+                            <el-step title="More Personal Data" :icon="stageIcon(2,'knocks-face-glasses2')"></el-step>
+                            <el-step title="Username And Phone" :icon="stageIcon(3,'knocks-email3')"></el-step>
+                            <el-step title="Protect Your Account" :icon="stageIcon(4,'knocks-locked4')"></el-step>
                             </el-steps>
                             
                         </div>
