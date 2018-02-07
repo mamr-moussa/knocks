@@ -127,7 +127,7 @@
 					</div>
 				</div>
 				<div class = "row knocks_house_keeper">
-					<div class = "col s12 l4"><p class = "knocks_text_dark_active"> Not active at ll</p></div>
+					<div class = "col s12 l4"><p class = "knocks_text_dark_active"> Not active at all</p></div>
 					<div class = "col s12 l8">
 						<el-progress v-loading = "retrivedAnswers.loading"  :percentage="parseInt( answersObject.q5[4] / answersObject.q5.total * 100)"></el-progress>
 					</div>
