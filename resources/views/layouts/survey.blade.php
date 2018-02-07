@@ -10,6 +10,9 @@
     <meta name="lang_font" content = "titllium"/>
     <meta name="lang_alignment" content = "left"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta property="og:description" content="Knocks Survey Analysis, See what do people think about Social Networking.">
+    <meta property="og:image" content="{{asset('snaps/knocks.png')}}">
+    <meta property="og:url" content="{{asset('')}}">
     @if(Auth::check())
     <meta name="pp_index" content="{{ auth()->user()->profile_picture }}">
     <meta name="user" content="{{auth()->user()->id}}">
@@ -21,9 +24,6 @@
     <meta name="user" content="-1">
     <meta name="main_circle" content="-1">
     <meta property="og:title" content="Knocks">
-<meta property="og:description" content="Knocks Survey Analysis, See what do people think about Social Networking.">
-<meta property="og:image" content="{{asset('snaps/knocks.png')}}">
-<meta property="og:url" content="{{asset('')}}">
     @endif
     <link rel="icon" type="text/css" href="{{asset('snaps/knocks.png')}}">
     <link rel="shortcut icon" type="text/css" href="{{asset('snaps/knocks.png')}}">
