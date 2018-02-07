@@ -15,6 +15,7 @@
     <meta property="og:image" content="{{asset('snaps/knocks.png')}}">
     <meta property="og:url" content="{{asset('')}}">
     <meta property="fb:app_id" content="1796023703741381" />
+    <meta property="og:site_name" content="Knocks, Inc.">
     <meta name="twitter:title" content="Knocks">
     <meta name="twitter:description" content=" Knocks Survey Analysis, See what do people think about Social Networking.">
     <meta name="twitter:image" content="{{asset('snaps/knocks.png')}}">
