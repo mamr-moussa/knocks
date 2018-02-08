@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
+  <head  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+  <meta property="fb:app_id" content="1796023703741381" /> 
+  <meta property="og:type"   content="website" /> 
+  <meta property="og:url"    content="https://knocksapp.com" /> 
+  <meta property="og:title"  content="Knocks" /> 
+  <meta property="og:image"  content="https://knocksapp.com/snaps/knocks.png" /> 
+  <meta charset="UTF-8" />
     <!--Internet Explorer Comp -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Mobile First -->
@@ -12,12 +17,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:title" content="Knocks">
     <meta property="og:description" content="Knocks Survey Analysis, See what do people think about Social Networking.">
-    <meta property="og:image" content="{{asset('snaps/knocks.png')}}">
-    <meta property="og:url" content="{{asset('')}}">
-    <meta property="fb:app_id" content="1796023703741381" />
+
+
     <meta property="og:site_name" content="Knocks, Inc.">
     <meta name="twitter:title" content="Knocks">
-    <meta property="og:type" content="website" />
+    
     <meta name="twitter:description" content=" Knocks Survey Analysis, See what do people think about Social Networking.">
     <meta name="twitter:image" content="{{asset('snaps/knocks.png')}}">
     <meta name="twitter:card" content="knocks">
