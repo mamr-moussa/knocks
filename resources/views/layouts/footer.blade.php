@@ -15,7 +15,10 @@
 
                </h5>
                <ul class = "knocks_color_kit_light">
-                 
+                @if(!auth()->check())
+                <li><a href = "{{asset('user/login')}}">Login</a></li>
+                <li><a href = "{{asset('user/register')}}">Create an account</a></li>
+                @endif      
                </ul>
              </div>
            </div>
