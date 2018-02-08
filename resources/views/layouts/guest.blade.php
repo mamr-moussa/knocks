@@ -7,7 +7,10 @@
   <meta property="og:type"   content="website" /> 
   <meta property="og:url"    content="https://knocksapp.com" /> 
   <meta property="og:title"  content="Knocks" /> 
-  <meta property="og:image"  content="https://knocksapp.com/snaps/knocks_logo.png" /> 
+  <meta property="og:image"  content="https://knocksapp.com/  /knocks_logo.png" /> 
+  
+  <meta name="google-site-verification" content="tsUIFUH4rGfxzV0M-SOdbUhgUTrwisWXmhNZpda_pVk" />
+
     <meta charset="UTF-8" />
     <div id = "knocks_nav_vue"></div>
     <!--Internet Explorer Comp -->

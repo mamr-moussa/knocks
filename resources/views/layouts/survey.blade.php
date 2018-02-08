@@ -7,6 +7,8 @@
   <meta property="og:title"  content="Knocks" /> 
   <meta property="og:image"  content="https://knocksapp.com/snaps/knocks_logo.png" /> 
   <meta charset="UTF-8" />
+  
+  <meta name="google-site-verification" content="tsUIFUH4rGfxzV0M-SOdbUhgUTrwisWXmhNZpda_pVk" />
     <!--Internet Explorer Comp -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Mobile First -->
