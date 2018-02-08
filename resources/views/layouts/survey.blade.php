@@ -3,9 +3,9 @@
   <head  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
   <meta property="fb:app_id" content="1796023703741381" /> 
   <meta property="og:type"   content="website" /> 
-  <meta property="og:url"    content="https://knocksapp.com/faq/survey/analysis" /> 
+  <meta property="og:url"    content="https://knocksapp.com/faq/survey/Analysis" /> 
   <meta property="og:title"  content="Knocks" /> 
-  <meta property="og:image"  content="https://knocksapp.com/snaps/knocks.png" /> 
+  <meta property="og:image"  content="https://knocksapp.com/snaps/knocks_logo.png" /> 
   <meta charset="UTF-8" />
     <!--Internet Explorer Comp -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
