@@ -7,7 +7,9 @@
   <meta property="og:title"  content="Knocks" /> 
   <meta property="og:image"  content="https://knocksapp.com/snaps/knocks_logo.png" /> 
   <meta charset="UTF-8" />
-  
+  <meta name="description" content="Knocks Survey, See what do poeple think about Social Networking.">
+  <meta name="keywords" content="Knocks, KnocksApp, Who's There, Social Media, social media, social, knocksapp, knocks, survey, Survey, survey ,Survey, answers ">
+  <meta name="author" content="KnocksApp">
   <meta name="google-site-verification" content="tsUIFUH4rGfxzV0M-SOdbUhgUTrwisWXmhNZpda_pVk" />
     <!--Internet Explorer Comp -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
