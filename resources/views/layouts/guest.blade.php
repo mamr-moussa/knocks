@@ -2,7 +2,12 @@
 <html class = "knocks_color_kit">
 
 
-  <head>
+  <head  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+  <meta property="fb:app_id" content="1796023703741381" /> 
+  <meta property="og:type"   content="website" /> 
+  <meta property="og:url"    content="https://knocksapp.com" /> 
+  <meta property="og:title"  content="Knocks" /> 
+  <meta property="og:image"  content="https://knocksapp.com/snaps/knocks.png" /> 
     <meta charset="UTF-8" />
     <div id = "knocks_nav_vue"></div>
     <!--Internet Explorer Comp -->
