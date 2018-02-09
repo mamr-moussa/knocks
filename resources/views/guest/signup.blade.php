@@ -398,7 +398,7 @@ background-color: #ee6e73 !important;
                                 gid = "password"
                                 icon = "knocks-locked4 "
                                 :is_required = "true"
-                                :min_len = "10"
+                                :min_len = "8"
                                 v-model = "password"
                                 type = "password"
                                 knocksclass = "knocks_input_ps_light"
@@ -421,7 +421,7 @@ background-color: #ee6e73 !important;
                                 gid = "password_confirmation"
                                 icon = "knocks-checkmark5"
                                 :is_required = "true"
-                                :min_len = "10"
+                                :min_len = "8"
                                 v-model = "password_confirmation"
                                 :same_as = "password"
                                 same_as_name = "your password"
@@ -433,9 +433,6 @@ background-color: #ee6e73 !important;
                                 :scope = "['registeration']"
                                 :submit_scope = "['registeration']"
                                 ></knocksinput>
-                                <a @click="triggerStages()" class = "knocks_fair_bounds col s12  knocks_pointer teal-text text-accent-4">
-                                    <static_message msg = "Already have an account?, Login."></static_message>
-                                </a>
                                 <knocksbutton
                                 placeholder = "previous"
                                 @knocks_button_clicked  = "stageSwitch(3)"
