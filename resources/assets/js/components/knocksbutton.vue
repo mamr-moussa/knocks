@@ -133,6 +133,10 @@ export default {
     disabled : {
       type : Boolean , 
       default : false ,
+    },
+    hide_success_msg : {
+      type : Boolean , 
+      default : false 
     }
 
 
@@ -245,7 +249,7 @@ export default {
         if(vm.reset_on_submit)App.$emit('knocks_input_reset' , vm.scope);
         var temp = response.data;
         if(temp == vm.success_at && vm.success_at != null){
-          if(vm.materialize_feedback)
+          if(vm.materialize_feedback && !vm.hide_success_msg)
              Materialize.toast(vm.success_msg, 3000, 'rounded');
           if(vm.reset_on_success){
             App.$emit('knocks_input_reset' , vm.scope);

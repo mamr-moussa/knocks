@@ -147,7 +147,7 @@ background-color: #ee6e73 !important;
                             @knocks_submit_accepted  = "logInUser()"
                             button_classes = "waves-effect waves-light btn knocks_btn_light knocks_color_kit_light knocks_text_md col s5 "
                             label_classes = "knocks_text_sm"
-                            success_msg= "Login Succesfull!"
+                            hide_success_msg
                             :scope = "['login']"
                             validation_error = "There're some fields we need you to complete."
                             connection_error = "There's a problem in your connection, please try again."
@@ -456,7 +456,7 @@ background-color: #ee6e73 !important;
                                 button_classes = "waves-effect waves-light btn knocks_btn_light knocks_color_kit_light knocks_text_md knocks_fair_bounds col s5 push-s1"
                                 label_classes = ""
                                 @knocks_submit_accepted  = "logInUser()"
-                                success_msg= "YESSS"
+                                hide_success_msg
                                 :scope = "['registeration']"
                                 validation_error = "There're some fields we need you to complete."
                                 connection_error = "There's a problem in your connection, please try again."

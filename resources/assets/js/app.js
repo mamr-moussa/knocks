@@ -512,7 +512,7 @@ Vue.component('knocksretriver', require('./components/knocksretriver.vue'));
       //   this.password.includes(this.first_name) || this.password.includes(this.last_name) ||
       //   this.password.includes(this.middle_name) || this.password.includes(this.nickname)
       //   ) score -= 30;
-        if(this.password.length < 10)
+        if(this.password.length < 8)
           score -= 30;
         if(this.password.match(/^(?=.*[a-zA-Z])(?=.*[0-9])/) == null)
           score -= 30;
