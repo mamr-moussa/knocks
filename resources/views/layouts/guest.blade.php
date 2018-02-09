@@ -37,7 +37,7 @@
     <meta name="user" content="-1">
     <meta name="session-type" content="guest">
     <meta name="description" content="Knocks, Reimagining the social media.">
-    <meta name="keywords" content="Knocks , KnocksApp , Who's There , Social Media , social media , social, knocksapp , knocks , survey , Survey , survey , Survey , answers,knocksapp, KnocksApp ,KnocksApp">
+    <meta name="keywords" content="Knocks,KnocksApp,Who's There,Social Media,social media,social,knocksapp,knocks,survey,Survey,survey,Survey,answers,knocksapp,KnocksApp,knocksapp.com">
     <meta name="author" content="KnocksApp">
     <link rel = "stylesheet" href = {{asset('css/app.css')}}  />
     @yield('externals')
