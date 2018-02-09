@@ -17,7 +17,7 @@
   <meta property="og:type"   content="website" /> 
   <meta property="og:url"    content="https://knocksapp.com" /> 
   <meta property="og:title"  content="Knocks" /> 
-  <meta property="og:image"  content="https://knocksapp.com/  /knocks_logo.png" /> 
+  <meta property="og:image"  content="https://knocksapp.com/snaps/knocks_logo.png" /> 
   
   <meta name="google-site-verification" content="tsUIFUH4rGfxzV0M-SOdbUhgUTrwisWXmhNZpda_pVk" />
 
@@ -39,6 +39,11 @@
     <meta name="description" content="Knocks, Reimagining the social media.">
     <meta name="keywords" content="Knocks,KnocksApp,Who's There,Social Media,social media,social,knocksapp,knocks,survey,Survey,survey,Survey,answers,knocksapp,KnocksApp,knocksapp.com">
     <meta name="author" content="KnocksApp">
+
+    <meta property="og:description" content="Knocks, Reimagining the social media.">
+
+
+    <meta property="og:site_name" content="Knocks, Inc.">
     <link rel = "stylesheet" href = {{asset('css/app.css')}}  />
     @yield('externals')
   </head>
