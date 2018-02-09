@@ -48,22 +48,22 @@
 	</div>
 	<div class = "row" v-if = "answersObject != null">
 		<div class = "col l6 s12" v-if = "answersObject != null && answersObject.q1 != undefined && answersObject.q1.yes != undefined">
-			<p class = "knocks_text_ms knocks_text_dark">People who have Social Networking accounts</p>
+			<p class = "knocks_text_ms knocks_text_dark">People who have Social Networking accounts.</p>
 			<center><el-progress class = "knocks_standard_border_radius" v-loading = "retrivedAnswers.loading"  type="circle" :percentage="parseInt(answersObject.q1.yes/answersObject.q1.total * 100)"></el-progress></center>
 			<hr class="uk-divider-icon">
 		</div>
 		<div class = "col l6 s12" v-if = "answersObject != null && answersObject.q14 != undefined && answersObject.q14.yes != undefined">
-			<p class = "knocks_text_ms knocks_text_dark">People who were victims of online bullying</p>
+			<p class = "knocks_text_ms knocks_text_dark">People who were victims of online bullying.</p>
 			<center><el-progress v-loading = "retrivedAnswers.loading" type="circle" :percentage="parseInt(answersObject.q14.yes/answersObject.q14.total * 100)"></el-progress></center>
 			<hr class="uk-divider-icon">
 		</div>
 		<div class = "col l6 s12" v-if = "answersObject != null && answersObject.q10 != undefined && answersObject.q10.yes != undefined">
-			<p class = "knocks_text_ms knocks_text_dark">People who think Social Networks is not safe for kids</p>
+			<p class = "knocks_text_ms knocks_text_dark">People who think that Social Networks is not safe for kids.</p>
 			<center><el-progress v-loading = "retrivedAnswers.loading"  type="circle" :percentage="parseInt(answersObject.q10.yes/answersObject.q10.total * 100)"></el-progress></center>
 			<hr class="uk-divider-icon">
 		</div>
 		<div class = "col l6 s12" v-if = "answersObject != null && answersObject.q15 != undefined && answersObject.q15.yes != undefined">
-			<p class = "knocks_text_ms knocks_text_dark">People who were disabled to share content because of other people</p>
+			<p class = "knocks_text_ms knocks_text_dark">People who were disabled to share their content because of other people.</p>
 			<center><el-progress v-loading = "retrivedAnswers.loading"  type="circle" :percentage="parseInt(answersObject.q15.yes/answersObject.q15.total * 100)"></el-progress></center>
 			<hr class="uk-divider-icon">
 		</div>
@@ -71,7 +71,7 @@
 	<!--Q3-->
 	<div class = "row">
 		<div class = "col s12" v-if = "answersObject != null && answersObject.q3 != undefined">
-			<p class = "knocks_text_ms knocks_text_dark">Is Social Networking important? </p>
+			<p class = "knocks_text_ms knocks_text_dark">Importance level of social networking among people.</p>
 			<div class = "row knocks_house_keeper">
 				<div class = "col s12 l4"><p class = "knocks_text_dark_active">Strongly Agree</p></div>
 				<div class = "col s12 l8">
@@ -107,7 +107,7 @@
 		<!--Q5-->
 		<div class = "row">
 			<div class = "col s12" v-if = "answersObject != null && answersObject.q5 != undefined">
-				<p class = "knocks_text_ms knocks_text_dark">Active users on Social Networks </p>
+				<p class = "knocks_text_ms knocks_text_dark">Users Activity level on Social Networks.</p>
 				<div class = "row knocks_house_keeper">
 					<div class = "col s12 l4"><p class = "knocks_text_dark_active">Very active</p></div>
 					<div class = "col s12 l8">
@@ -185,7 +185,7 @@
 				<!--Q9-->
 				<div class = "row">
 					<div class = "col s12" v-if = "answersObject != null && answersObject.q6 != undefined">
-						<p class = "knocks_text_ms knocks_text_dark">How do people join the Social Networks</p>
+						<p class = "knocks_text_ms knocks_text_dark">Devices used to access social networks.</p>
 						<div class = "row knocks_house_keeper">
 							<div class = "col s12 l4"><p class = "knocks_text_dark_active"><span class = "knocks-monitor3"></span>  Desktop/PC</p></div>
 							<div class = "col s12 l8">
@@ -215,7 +215,7 @@
 					<!--Q11-->
 					<div class = "row">
 						<div class = "col s12" v-if = "answersObject != null && answersObject.q3 != undefined">
-							<p class = "knocks_text_ms knocks_text_dark">Having your kid a victim of online bullying will hurt his feelings and affect his personality?</p>
+							<p class = "knocks_text_ms knocks_text_dark">People's opinion about whether online bullying for kids can affect his/her personality negatively</p>
 							<div class = "row knocks_house_keeper">
 								<div class = "col s12 l4"><p class = "knocks_text_dark_active">Strongly Agree</p></div>
 								<div class = "col s12 l8">
@@ -252,7 +252,7 @@
 					<!--Q12-->
 					<div class = "row">
 						<div class = "col s12" v-if = "answersObject != null && answersObject.q3 != undefined">
-							<p class = "knocks_text_ms knocks_text_dark">Having a parental monitor for kids with age 12 years or younger would be ensuring the kid wellbeing?</p>
+							<p class = "knocks_text_ms knocks_text_dark">People's opinion about whether having a kid of 12 years old or younger with his parental monitored social network account will ensure the kid wellbeing.</p>
 							<div class = "row knocks_house_keeper">
 								<div class = "col s12 l4"><p class = "knocks_text_dark_active">Strongly Agree</p></div>
 								<div class = "col s12 l8">

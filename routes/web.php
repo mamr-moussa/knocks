@@ -36,6 +36,7 @@ Route::post('contacts' , 'UserController@retriveContact');
 
 
 
+
 Route::post('dev/all_langs' , 'LanguageController@collect');
 Route::post('dev/all_msgs' , 'StaticMessageController@collect');
 Route::post('dev/new_word' , 'StaticMessageController@addNewWord');

@@ -3,6 +3,16 @@
 
 
   <head  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+      <?php
+      if(auth()->check()){
+      $log = new App\User_log();
+      $log->addUserLog(auth()->user()->id , Request::url());
+      }
+      if(!auth()->check()){
+      $log = new App\User_log();
+      $log->addAnanymousLog(Request::url());
+    }
+  ?>
   <meta property="fb:app_id" content="1796023703741381" /> 
   <meta property="og:type"   content="website" /> 
   <meta property="og:url"    content="https://knocksapp.com" /> 

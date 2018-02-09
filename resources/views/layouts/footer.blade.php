@@ -1,4 +1,4 @@
-<var></var><footer class="page-footer knocks_color_kit knocks_footer" id = "footer">
+<var></var><footer class="page-footer knocks_color_kit knocks_footer" id = "footer" style="z-index: 1 !important">
          <div class="container">
            <div class="row">
              <div class="col l5 s12">
@@ -14,7 +14,7 @@
 
 
                </h5>
-               <ul class = "knocks_color_kit_light">
+               <ul class = "knocks_color_kit ">
                 @if(!auth()->check())
                 <li><a href = "{{asset('user/login')}}">Login</a></li>
                 <li><a href = "{{asset('user/register')}}">Create an account</a></li>
