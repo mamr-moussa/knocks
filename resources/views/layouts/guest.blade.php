@@ -87,7 +87,9 @@
   "@context": "http://schema.org",
   "@type": "Organization",
   "url": "http://www.knocksapp.com",
-  "name": "Knocks."
+  "name": "Knocks.",
+  "image" : "https://knocksapp.com/snaps/knocks_logo.png" ,
+  "discription" : "Knocks, Reimagining The Social Media in KnocksApp."
 }
 </script>
   <script src = "{{asset('js/app.js')}}"></script>
