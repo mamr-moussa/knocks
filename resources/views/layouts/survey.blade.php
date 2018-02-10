@@ -96,7 +96,7 @@
   "@type": "Organization",
   "url": "http://www.knocksapp.com",
   "name": "Knocks.",
-  "logo": : "https://knocksapp.com/ssnaps/knocks_logo.png" ,
+  "logo":  "https://knocksapp.com/ssnaps/knocks_logo.png" ,
   "legalName" : "Knocks, INC",
    "foundingDate": "2017",
     "founders": [
