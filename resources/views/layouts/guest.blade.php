@@ -45,7 +45,7 @@
     <meta name="keywords" lang="en" content="analysis">
     <meta name="keywords" lang="en" content="statistics">
     <div id = "knocks_nav_vue"></div>
-    <link rel="alternate" href="{{Request::url}}" hreflang="en" />
+    <link rel="alternate" href="{{Request::url()}}" hreflang="en" />
     <!--Internet Explorer Comp -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}">
     <link rel="icon" type="text/css" href="{{asset('snaps/knocks_tiny.png')}}">
