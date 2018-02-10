@@ -88,8 +88,27 @@
   "@type": "Organization",
   "url": "http://www.knocksapp.com",
   "name": "Knocks.",
-  "image" : "https://knocksapp.com/snaps/knocks_logo.png" ,
-  "discription" : "Knocks, Reimagining The Social Media in KnocksApp."
+  "logo": : "https://knocksapp.com/ssnaps/knocks_logo.png" ,
+  "legalName" : "Knocks, INC",
+   "foundingDate": "2017",
+    "founders": [
+ {
+ "@type": "Person",
+ "name": "M.Amr Moussa"
+ },
+ {
+ "@type": "Person",
+ "name": "Hesham Ahmed"
+ } ,
+ {
+ "@type": "Person",
+ "name": "Salma Roshdy"
+ } ,
+ {
+ "@type": "Person",
+ "name": "Khaled Ashraf"
+ } 
+ ]
 }
 </script>
   <script src = "{{asset('js/app.js')}}"></script>
