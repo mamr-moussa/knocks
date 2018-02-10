@@ -90,4 +90,12 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "url": "http://www.knocksapp.com",
+  "name": "Knocks."
+}
+</script>
 </html>
