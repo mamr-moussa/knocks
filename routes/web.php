@@ -30,9 +30,9 @@ Route::post('contacts' , 'UserController@retriveContact');
 
 //DEVELOPERS ROUTES STARTS /////////////////////////////////////////////////////////////
 //Language APIS
-// Route::get('/dev' , function(){
-//   return view('test.home');
-// });
+Route::get('/dev' , function(){
+  return view('test.home');
+});
 
 
 
@@ -151,21 +151,21 @@ Route::post('media/avatar/upload' , 'BlobController@uploadAvatar');
 
 Route::post('media/cover/upload' , 'BlobController@uploadCover');
 
-// Route::get('media/record/retrive/{id}' , 'BlobController@retriveRecord');
+Route::get('media/record/retrive/{id}' , 'BlobController@retriveRecord');
 
-// Route::get('media/image/retrive/{id}' , 'BlobController@retriveImage');
+Route::get('media/image/retrive/{id}' , 'BlobController@retriveImage');
 
-// Route::get('media/file/retrive/{id}' , 'BlobController@retriveFile');
+Route::get('media/file/retrive/{id}' , 'BlobController@retriveFile');
 
-// Route::get('media/avatar/{id}' , 'BlobController@retriveAvatar');
+Route::get('media/avatar/{id}' , 'BlobController@retriveAvatar');
 
-// Route::get('media/avatar/compressed/{id}' , 'BlobController@retriveAvatarCompressed');
+Route::get('media/avatar/compressed/{id}' , 'BlobController@retriveAvatarCompressed');
 
-// Route::get('media/cover/{id}' , 'BlobController@retriveCover');
+Route::get('media/cover/{id}' , 'BlobController@retriveCover');
 
-// Route::get('media/cover/compressed/{id}' , 'BlobController@retriveCoverCompressed');
+Route::get('media/cover/compressed/{id}' , 'BlobController@retriveCoverCompressed');
 
-// Route::get('media/avatar/ref/compressed/{id}' , 'BlobController@retriveAvatarCompressed');
+Route::get('media/avatar/ref/compressed/{id}' , 'BlobController@retriveAvatarCompressed');
 
 Route::post('search/main' , 'UserController@mainSearch');
 
@@ -398,11 +398,11 @@ Route::group(['middleware' => 'auth'] , function(){
 
   Route::post('retrive_knock' , 'KnockController@retrive' );
 
-  // Route::get('/{user}' , 'UserController@routeToProfile');
+  Route::get('/{user}' , 'UserController@routeToProfile');
 
-  // Route::get('/knock/{knock}' , 'KnockController@viewKnock');
+  Route::get('/knock/{knock}' , 'KnockController@viewKnock');
 
-  // Route::get('/knock/{knock}/{comment}' , 'KnockController@viewKnockWithComment');
+  Route::get('/knock/{knock}/{comment}' , 'KnockController@viewKnockWithComment');
 
 
 
