@@ -57,21 +57,9 @@
     @include('layouts.surveynav')
     @yield('externals')
     <meta name="session-type" content="guest">
-  </head>
-  <body>
-    <main id = "knocks_main">
-      <div class = "knocks_full_wrapper"></div>
-      <div id = "app"  class = "row">
-        <div>
-          @yield('content')
-        </div>
-      </div>
-    </main>
-    @include('layouts.footer')
-  </body>
-  @yield('tail')
-  <script src = "{{asset('js/app.js')}}"></script>
-  <script>
+
+    <!--Social Scripts-->
+      <script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1796023703741381',
@@ -91,6 +79,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
+
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -120,5 +109,19 @@
  ]
 }
 </script>
-</script>
+
+  </head>
+  <body>
+    <main id = "knocks_main">
+      <div class = "knocks_full_wrapper"></div>
+      <div id = "app"  class = "row">
+        <div>
+          @yield('content')
+        </div>
+      </div>
+    </main>
+    @include('layouts.footer')
+  </body>
+  @yield('tail')
+  <script src = "{{asset('js/app.js')}}"></script>
 </html>
