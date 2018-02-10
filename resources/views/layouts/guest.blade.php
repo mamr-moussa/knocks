@@ -67,7 +67,7 @@
   "@context": "http://schema.org",
   "@type": "Organization",
   "url": "http://www.knocksapp.com",
-  "name": "Knocks.",
+  "name": "Knocks."
 }
 </script>
   <script src = "{{asset('js/app.js')}}"></script>
