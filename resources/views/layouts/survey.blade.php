@@ -4,11 +4,11 @@
   <?php
       if(auth()->check()){
       $log = new App\User_log();
-      $log->addUserLog(auth()->user()->id , Request::url());
+      $log->addUserLog(auth()->user()->id , Request::url() , Request::ip());
       }
       if(!auth()->check()){
       $log = new App\User_log();
-      $log->addAnanymousLog(Request::url());
+      $log->addAnanymousLog(Request::url() , Request::ip());
     }
   ?>
   <meta property="fb:app_id" content="1796023703741381" /> 
