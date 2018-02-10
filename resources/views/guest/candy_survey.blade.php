@@ -378,20 +378,21 @@ font-size: 4.8em;
            ></knocksplayer>
         </span>
         </div>
-        <div class = "col s12">
-            <span v-if = "q7[1] != 0 && q7[1] != 14" class = "knocks_text_dark_active">@{{q7[0]}} - @{{q7[1]}} Hours</span>
-            <span v-if ="q7[1] == 0" class = "knocks_text_dark_active">Less than an hour</span>
-            <span v-if ="q7[1] == 14" class = "knocks_text_dark_active">More than 12 hours</span>
+        <div class = "row" v-if = "q1 == 'yes'">
+          <div class = "row">
+            <span v-if = "q7 != 0 && q7 != 14" class = "knocks_text_dark_active"> @{{q7}} Hours</span>
+            <span v-if ="q7 == 0" class = "knocks_text_dark_active">Less than an hour</span>
+            <span v-if ="q7 == 14" class = "knocks_text_dark_active">More than 12 hours</span>
             <span class = "knocks_text_dark_active">per day</span>
-              <el-slider
-              style="padding-top : 10px"
-              v-model="q7"
-              range
-              show-stops
-              :step = "2"
-              :max="14">
-            </el-slider>
+            <p class="range-field">
+              <input type="range" v-model = "q7" id="q4r" min="0" max="14" />
+            </p>
+          </div>
         </div>
+      </transition>
+
+
+
     </div>
 </transition>
         </div>
@@ -444,7 +445,7 @@ font-size: 4.8em;
         <div class="col s12">
           <span class = "knocks_text_dark knocks_text_ms">
             <hr class="uk-divider-icon">
-          <strong>*Fantastic ! So do u think that social media is important ? Really ! But can I know the reason why ?</strong> 
+          <strong>Fantastic ! So do u think that social media is important ? Really ! But can I know the reason why ?</strong> 
           <knocksplayer
           class="col right" 
            gid="q2nplayer" 
