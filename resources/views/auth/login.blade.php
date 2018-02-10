@@ -25,9 +25,9 @@ background-color: #ee6e73 !important;
 /**/
 </style>
 <link rel = "icon" href = "{{asset('snaps/knocks_tiny.png')}}"/>
+<title>Welcome To Knocks</title>
 @endsection
 @section('content')
-<title>Welcome To Knocks</title>
 <div class = "">
     <div class = "row">
         <div class = "col l6 hide-on-med-and-down">
