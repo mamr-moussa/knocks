@@ -123,7 +123,7 @@ background-color: #ee6e73 !important;
                             gid = "password_login"
                             icon = "knocks-locked4 "
                             :is_required = "true"
-                            :min_len = "10"
+                            :min_len = "8"
                             v-model = "password_login"
                             type = "password"
                             knocksclass = "knocks_input_ps_light"

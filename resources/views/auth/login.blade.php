@@ -28,6 +28,7 @@ background-color: #ee6e73 !important;
 <title>Welcome To Knocks</title>
 @endsection
 @section('content')
+
 <div class = "">
     <div class = "row">
         <div class = "col l6 hide-on-med-and-down">
@@ -122,7 +123,7 @@ background-color: #ee6e73 !important;
                             gid = "password_login"
                             icon = "knocks-locked4 "
                             :is_required = "true"
-                            :min_len = "10"
+                            :min_len = "8"
                             v-model = "password_login"
                             type = "password"
                             knocksclass = "knocks_input_ps_light"

@@ -265,7 +265,7 @@ font-size: 4.8em;
         <hr class="uk-divider-icon">
         <div class="row">
             <h3 class = "knocks_text_dark nocks_text_dark">
-           1. Do you have a Social Networking account ?
+           Do you have a Social Networking account ?
            <knocksplayer
           class="col right" 
            gid="q3player" 
@@ -361,7 +361,7 @@ font-size: 4.8em;
         <div class="col s12">
           <hr class="uk-divider-icon">
             <span class = "knocks_text_dark knocks_text_ms">
-            <strong>*How much time do you spend daily on the social networks ?</strong>
+            <strong>How much time do you spend daily on the social networks ?</strong>
             <knocksplayer
           class="col right" 
            gid="q4player" 
@@ -405,7 +405,7 @@ font-size: 4.8em;
   <div class="row">
           <div class="col s12">
             <hr class="uk-divider-icon">
-          <h3 class="knocks_text_dark">2. Alright sweetie here is a situation, a little boy called Harry , Harry was posting on his account and somebody belittled him in a away ,in your opinion which face will Harry have ?
+          <h3 class="knocks_text_dark">Alright sweetie here is a situation, a little boy called Harry , Harry was posting on his account and somebody belittled him in a away ,in your opinion which face will Harry have ?
           <knocksplayer
           class="col right" 
            gid="q1player" 
@@ -471,7 +471,7 @@ font-size: 4.8em;
   <div class="row">
           <div class="col s12">
             <hr class="uk-divider-icon">
-          <h3 class="knocks_text_dark">3. Ok little kid, Do you get bored when posting using the keyboard ? Would it be nicer to use voice notes also to post ?
+          <h3 class="knocks_text_dark">Ok little kid, Do you get bored when posting using the keyboard ? Would it be nicer to use voice notes also to post ?
           <knocksplayer
           class="col right" 
            gid="q7player" 
@@ -512,7 +512,7 @@ font-size: 4.8em;
 <div class="row">
           <div class="col s12">
             <hr class="uk-divider-icon">
-          <h3 class="knocks_text_dark">2. Aha , I have been thinking about my friend’s situation , can you help me please ?, my friend Jenifer she has her account supervised by her parents to ensure that she is ok, do you think Jenifer is happy with that ?
+          <h3 class="knocks_text_dark">Aha , I have been thinking about my friend’s situation , can you help me please ?, my friend Jenifer she has her account supervised by her parents to ensure that she is ok, do you think Jenifer is happy with that ?
           <knocksplayer
           class="col right" 
            gid="q8player" 
