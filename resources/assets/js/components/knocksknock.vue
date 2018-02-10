@@ -65,8 +65,14 @@
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item v-if="userId == knockObject.user_id">
          <div>
-          <span class = "knocks-pencil9 knocks_icon_border blue-text"></span>
+          <span class = "knocks-trashcan4 knocks_icon_border blue-text"></span>
           <static_message msg = "Edit" classes="blue-text"></static_message>
+        </div>
+        </el-dropdown-item>
+         <el-dropdown-item v-if="userId == knockObject.user_id">
+         <div>
+          <span class = "knocks-pencil9 knocks_icon_border red-text"></span>
+          <static_message msg = "Delete" classes="red-text"></static_message>
         </div>
         </el-dropdown-item>
         <el-dropdown-item v-if = "ownerObject != null && !ownerObject.thatsMe" >
