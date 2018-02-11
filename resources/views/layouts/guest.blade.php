@@ -10,6 +10,7 @@
       $log = new App\User_log();
       $log->addAnanymousLog(Request::url() , Request::ip());
     }
+
   ?>
     <!--OG TAGS-->
     <meta property="fb:app_id" content="1796023703741381" />
