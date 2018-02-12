@@ -543,7 +543,7 @@ Vue.component('knocksretriver', require('./components/knocksretriver.vue'));
 
       this.getuserCircles();
 
-      //this.getNotifications();
+      this.getNotifications();
 
       //sthis.answersPatch();
 

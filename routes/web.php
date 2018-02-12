@@ -400,9 +400,9 @@ Route::group(['middleware' => 'auth'] , function(){
 
   Route::get('/{user}' , 'UserController@routeToProfile');
 
-  Route::get('/knock/{knock}' , 'KnockController@viewKnock');
+  // Route::get('/knock/{knock}' , 'KnockController@viewKnock');
 
-  Route::get('/knock/{knock}/{comment}' , 'KnockController@viewKnockWithComment');
+  // Route::get('/knock/{knock}/{comment}' , 'KnockController@viewKnockWithComment');
 
 
 

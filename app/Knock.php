@@ -160,7 +160,7 @@ class Knock extends Model
     }
 
     public function watchSeen($user){
-      if(!Object::find($this->object_id)->isAvailable($user)) return false ;
+      if(!obj::find($this->object_id)->isAvailable($user)) return false ;
       $index = $this->knockIndex();
       $seen = $index->seen;
       if(isset($seen->$user))

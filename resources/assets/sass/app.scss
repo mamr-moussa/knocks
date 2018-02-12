@@ -161,7 +161,7 @@ a:hover{
   padding : 2px ;
 }
 .knocks_content_padding{
-  padding-top: 2px ;
+  padding-top: 3px ;
   padding-bottom: 2px ;
   padding-right: 7px ;
   padding-left: 7px ;
@@ -173,6 +173,9 @@ a:hover{
 
 .knocks_pointer{
   cursor: pointer !important;
+}
+.knocks_tagged_user{
+  margin-top : 2px !important;
 }
 #knocks_main_injectort{
   padding: 0.4rem;

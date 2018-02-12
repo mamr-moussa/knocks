@@ -56,7 +56,8 @@
         <div class = "knocks_balloons_container" >
         <knocksballon
         v-for = "(ballon , ind) in ballons" :key="ind"
-        :gid="'knocks_notification_wall_'+ind"    
+        :gid="'knocks_notification_wall_'+ind"   
+        v-if = "ballon.poped == 0" 
         :constrains = "ballon"
         ></knocksballon>
 

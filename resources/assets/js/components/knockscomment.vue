@@ -41,14 +41,14 @@
           show_image></knocksuser><!-- </center>
  -->        </div>   
       </div>
-      <div class="col  cnt row  knocks_light_color_kit knocks_gray_border knocks_house_keeper" style="max-width : calc(100% - 34px); margin-left: 15px !important;">
+      <div class="col  cnt row  knocks_light_color_kit knocks_gray_border knocks_house_keeper" style="max-width : calc(100% - 50px); margin-left: 15px !important;">
        
         <div class="col s12  ">
           <span class = "knocks_content_padding">
-          <a v-if = "ownerObject != null"  class="knocks_inline knocks_side_padding  " :href = "asset(ownerObject.username)">{{ownerObject.name}}</a>
+          <a v-if = "ownerObject != null"  class="knocks_inline left  knocks_side_padding  " :href = "asset(ownerObject.username)">{{ownerObject.name}}</a>
           <span  style = "margin-top: auto" 
            @dblclick = "flowtext()"
-           class="knocks_text_dark content  " :id = "gid"></span>
+           class="knocks_text_dark content  col" :id = "gid"></span>
          </span>
         </div>
         <div class="row knocks_house_keeper" v-if="bodyLen > 350" ><div v-if="bodyLen > 350" class="top"><a class="rdmore right" @click="rd();" href="javascript:void(0);" :id = "gid+'_readmore'">See more</a></div>
@@ -586,7 +586,7 @@ height: 40% !important;
 background-color: ;
 }
 .content{
-  width: 100%;
+  //width: 100%;
   overflow: hidden;
   //height: 7.4em;
   line-height: 1.3em;

@@ -9,7 +9,7 @@
     <div v-if = "knock_type == 'normal' " class=" panel pink lighten-4">
       <knocksuser :user="knockObject.user_id" main_container = "col s2" v-model="ownerObject" show_image>
       </knocksuser>
-      <span class="knocks_text_dark content" :id = "gid"></span>
+      <span class="knocks_text_dark col content" :id = "gid"></span>
       <a  class="rdmore right" @click="rd();" :id = "gid+'_readmore'" href="javascript:void(0);">See more</a>
       <p class="right knocks_text_dark">{{knockObject.time}}</p>
     </div>
@@ -41,14 +41,14 @@
           show_image></knocksuser><!-- </center>
  -->        </div>   
       </div>
-      <div class="col  cnt knocks_gray_border knocks_house_keeper" style="max-width : calc(100% - 34px); margin-left: 15px !important;">
+      <div class="col  cnt knocks_gray_border knocks_house_keeper" style="max-width : calc(100% - 50px); margin-left: 15px !important;">
        
           <div class="col s12  ">
           <span class = "knocks_content_padding">
-          <a v-if = "ownerObject != null"  class="knocks_inline knocks_side_padding  " :href = "asset(ownerObject.username)">{{ownerObject.name}}</a>
+          <a v-if = "ownerObject != null"  class="col knocks_side_padding  " :href = "asset(ownerObject.username)">{{ownerObject.name}}</a>
           <span  style = "margin-top: auto" 
            @dblclick = "flowtext()"
-           class="knocks_text_dark content  " :id = "gid"></span>
+           class="knocks_text_dark content  col" :id = "gid"></span>
          </span>
         </div>
 
@@ -590,7 +590,7 @@ height: 40% !important;
 background-color: ;
 }
 .content{
-  width: 100%;
+  //width: 100%;
   overflow: hidden;
   //height: 7.4em;
   line-height: 1.3em;
