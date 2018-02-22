@@ -46,21 +46,29 @@
 
 
     <!--LEVEL TWO -->
-
-
-    <div :class = "input_container" v-if="!draggingMode" 
+   <div>
+    <div>
+   <div class ="white col s10 knocks_house_keeper knocks_standard_border_radius" 
+    :class = "[{'knocks_theme_active_border':focused},{'knocks_pink_border' : !focused}]">
+    <div :class = "[input_container , {'col s12':focused}, {'col m8 s6':!focused}]" v-if="!draggingMode" 
     contenteditable = "true" 
     class = "knocks_language_follower white" data-text="Enter text here..." :id = "gid+'_input'" v-model = "bodyContent" @input = "constructInput()">
 
     </div>
-    <knocksmultipleuploader @change = "showInterest()" :gid = "gid+'_file_uploader'" v-model  = "uploader" :scope = "scope"></knocksmultipleuploader>
+
+    
 
 
     <!--Level Three-->
 
 
         
-        <div :class = "options_bar_class" class = "" style = "margin-top:4px; margin-bottom:0px">
+        <div :class = "options_bar_class" class = "knocks_house_keeper" style = "margin-top:4px; margin-bottom:0px">
+
+          <transition >
+            <div :class = "{'knocks_hidden':focused}" class = "col right">
+
+          <knocksmultipleuploader @change = "showInterest()" :gid = "gid+'_file_uploader'" v-model  = "uploader" :scope = "scope"></knocksmultipleuploader>
           <!-- <a :class = "[maps_classes , option_classes ]" :data-target="gid+'_map_modal'" class="btn modal-trigger"><span :class = "[maps_icon]" @click="triggerMaps"></span></a> -->
           
 <!--              <knockspopover>
@@ -102,7 +110,9 @@
           </knockspopover>
           <knocksrecorder
           v-if = "!draggingMode"
-          @input = "showInterest()"
+          
+          @recognition="addRecognitionContent($event)"
+          @record_reset="addRecognitionContent('')"
           v-model = "recorder"
           hide_player
           main_container = "knocks_house_keeper knocks_inline"
@@ -136,11 +146,16 @@
           :player_show_volume = "player_show_volume"
           :player_volume_icon_grid = "player_volume_icon_grid"
           :player_volume_sniper_container = "player_volume_sniper_container"
+          timer_right
           >
       </knocksrecorder>
           
 
+      </div>
+    </transition>
 
+  </div>
+</div>
    
 
         <div :class="btn_container_class">
@@ -175,6 +190,7 @@
        </div>
        
        </div>
+     </div>
       </div>
 
 
@@ -240,7 +256,7 @@ export default {
   	},
   	input_container : {
   		type : String , 
-  		default : 'knocks_content_reply_continer col m8 s6'
+  		default : 'knocks_content_reply_continer '
   	},
   	scope : {
   		type : Array ,
@@ -344,7 +360,7 @@ export default {
     },
     option_classes : {
       type : String , 
-      default : 'btn btn-floating knocks_tiny_floating_btn  pink darken-1 knocks_noshadow_ps'
+      default : 'btn btn-floating knocks_tiny_floating_btn  transparent pink-text darken-1 knocks_noshadow_ps'
     },
     maps_classes : {
       type : String , 
@@ -509,6 +525,9 @@ export default {
       hasRecord : false ,
       hasFiles : false ,
       hasImages : false ,
+      textContent : {text : '' , voice : ''} ,
+      finalTextBody : '' ,
+      focused : false ,
       
 
     }
@@ -559,6 +578,16 @@ export default {
     //     }
     //   }
     // });
+        //Content Editable Behavior with BR 
+    $('div[contenteditable]').keydown(function(e) {
+    // trap the return key being pressed
+    if (e.keyCode === 13) {
+      // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+      document.execCommand('insertHTML', false, '<br><br>');
+      // prevent the default behaviour of return key pressed
+      return false;
+    }
+  });
     App.$on('knocksMediaQueryLogged' , (payload)=>{
       console.log('mediaQueryRecieved');
       console.log(payload);
@@ -853,6 +882,7 @@ export default {
         voices_specifications : this.recordToken ,
         seen : 0 , 
         feelings : [] , 
+        text : this.finalTextBody , 
         post_id : this.parent_id ,
         check_in : this.locationResult ,
         tags : this.tagged ,
@@ -872,7 +902,8 @@ export default {
       this.submitFormat();
     },
     watchMyDomKeeper(){
-       const vm = this;
+        const vm = this;
+        this.updateTextContent();
        let childs = document.getElementById(vm.gid+'_input').children;
        let i;
         for(i = 0 ; i < childs.length; i++){
@@ -902,10 +933,12 @@ export default {
       //$('#knockknock_input').focus;
     });
      $(document).on('focus' , '#'+this.gid+'_input' , function(){
+      vm.focused = true;
       if(!vm.interest)
       vm.showInterest();
      });
        $(document).on('blur' , '#'+this.gid+'_input' , function(){
+        vm.focused = false;
         vm.watchMyDomKeeper();
         vm.watchMyDomKeeper();
     });
@@ -937,6 +970,8 @@ export default {
       this.draggingMode =false ;
       this.recorderResponded = false ;
       this.mfuResponded = false;
+      this.textContent = {text : '' , voice : ''};
+      this.finalTextBody = "";
       App.$emit('knocks_multiple_uploader_reset' , this.scope);
       $('#'+this.gid+'_input').empty()
       $('#'+this.gid+'_input').blur()
@@ -967,6 +1002,17 @@ export default {
         });
       
       },
+            updateTextContent(){
+      this.textContent.text= $('#'+this.gid+'_input').text();
+      this.hashFinalTextContent();
+    },
+    addRecognitionContent(e){
+      this.textContent.voice = e;
+      this.hashFinalTextContent();
+    },
+    hashFinalTextContent(){
+      this.finalTextBody = this.textContent.text+' '+this.textContent.voice.trim();
+    },
 
 
 

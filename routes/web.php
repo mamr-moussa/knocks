@@ -93,18 +93,30 @@ Route::post('career' , 'CareerController@createCareer');
 
 Route::post('career/get' , 'CareerController@retriveCareer');
 
+Route::post('career/update' , 'CareerController@updateCareer');
+
+Route::post('career/delete' , 'CareerController@deleteCareer');
+
+
 //Education
 
 Route::post('education' , 'EducationController@createEducation');
 
 Route::post('education/get' , 'EducationController@retriveEducation');
 
+Route::post('education/update' , 'EducationController@updateEducation');
+
+Route::post('education/delete' , 'EducationController@deleteEducation');
 
 //High Education
 
 Route::post('high_education' , 'HighEducationController@createHighEducation');
 
 Route::post('high_education/get' , 'HighEducationController@retriveHighEducation');
+
+Route::post('high_education/update' , 'HighEducationController@updateHighEducation');
+
+Route::post('high_education/delete' , 'HighEducationController@deleteHighEducation');
 
 
 //Hobby
@@ -113,11 +125,22 @@ Route::post('hobby' , 'HobbyController@createHobby');
 
 Route::post('hobby/get' , 'HobbyController@retriveHobby');
 
+Route::post('hobby/update' , 'HobbyController@updateHobby');
+
+Route::post('hobby/delete' , 'HobbyController@deleteHobby');
+
+
 //Sport
 
 Route::post('sport' , 'SportController@createSport');
 
 Route::post('sport/get' , 'SportController@retriveSport');
+
+Route::post('sport/update' , 'SportController@updateSport');
+
+Route::post('sport/delete' , 'SportController@deleteSport');
+
+
 
 Route::post('post/create' , 'KnockController@create');
 
@@ -400,9 +423,11 @@ Route::group(['middleware' => 'auth'] , function(){
 
   Route::get('/{user}' , 'UserController@routeToProfile');
 
-  // Route::get('/knock/{knock}' , 'KnockController@viewKnock');
+  Route::get('/knock/{knock}' , 'KnockController@viewKnock');
+  
+  Route::get('/cmnt/{comment}' , 'KnockController@viewComment');
 
-  // Route::get('/knock/{knock}/{comment}' , 'KnockController@viewKnockWithComment');
+  Route::get('/knock/{knock}/{comment}' , 'KnockController@viewKnockWithComment');
 
 
 

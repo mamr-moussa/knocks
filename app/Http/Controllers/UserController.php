@@ -9,6 +9,10 @@ use App\Circle_member;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Knock;
+use App\Comment;
+use App\Reply;
+use App\obj;
+use DB;
 class UserController extends Controller
 {
   public function userCircles (){
@@ -44,10 +48,10 @@ class UserController extends Controller
 
     public function goHome(Request $request){
       if(Auth::check()){
-        // return view('user.home');
-        if(auth()->user()->age() > 13)
-      return view('guest.survey');
-    else return view('guest.candy_survey');
+        return view('user.home');
+    //     if(auth()->user()->age() > 13)
+    //   return view('guest.survey');
+    // else return view('guest.candy_survey');
       }else return view('guest.signup');
     }
     
@@ -169,11 +173,11 @@ class UserController extends Controller
 
         $circle = auth()->user()->mainCircle();
         $suggestions =  $circle->circleMembers()->join('users' , 'users.id' , '=' , 'circle_members.user_id')
-        ->orwhere('users.first_name' , 'like' , '%'.$request->q.'%')
-        ->orwhere('users.last_name' , 'like' , '%'.$request->q.'%')
-        ->orwhere('users.middle_name' , 'like' , '%'.$request->q.'%')
-        ->orwhere('users.nickname' , 'like' , '%'.$request->q.'%')
-        ->orwhere('users.username' , 'like' , '%'.$request->q.'%')
+        ->orwhere('users.first_name' , 'sounds like' , $request->q)
+        ->orwhere('users.last_name' , 'sounds like', $request->q)
+        ->orwhere('users.middle_name' , 'sounds like' , $request->q)
+        ->orwhere('users.nickname' , 'sounds like', $request->q)
+        ->orwhere('users.username' , 'sounds like' , $request->q)
         ->pluck('users.id');
 
         $result = [];
@@ -195,11 +199,36 @@ class UserController extends Controller
     }
     public function mainSearch(Request $request){
       $result = array();
-      $result['users'] = User::where('username' , 'like' , '%'.$request->q.'%')
-      ->orwhere('first_name' , 'like' , '%'.$request->q.'%')
-      ->orwhere('last_name' , 'like' , '%'.$request->q.'%')
-      ->orwhere('nickname' , 'like' , '%'.$request->q.'%')
-      ->orwhere('middle_name' , 'like' , '%'.$request->q.'%')->pluck('id');
+      $result['users'] = auth()->user()->soundsLikeID($request->q);
+      $result['reply'] = array();
+      $result['comment'] = array();
+      $result['knock'] = array();
+      // $obs = obj::
+      // where('keywords' , 'like' , "%$request->q%  ")
+      // ->get();
+
+
+       //  $obs = collect(DB::select( DB::raw("SELECT id FROM objs 
+       //    WHERE keywords sounds like '$request->q'
+       //    or keywords like '%$request->q%'
+       //    "
+       //  ) 
+       // ));
+      $objs = obj::where('type' , '=' , 'knock')
+      ->orwhere('type' , '=','comment')
+      ->orwhere('type' , '=','reply')->get();
+      foreach($objs as $ob){
+
+  
+        if( $ob->isAvailable(auth()->user()->id)){
+          similar_text($ob->keywords, $request->q,$percent);
+
+          if( $percent > 50 || strpos($ob->keywords, $request->q) )
+          if($ob->type == 'knock')array_push($result[$ob->type], Knock::where('object_id' , '=' , $ob->id)->first()->id);
+          elseif($ob->type == 'comment')array_push($result[$ob->type], Comment::where('object_id' , '=' , $ob->id)->first()->id);
+          elseif($ob->type == 'reply')array_push($result[$ob->type], Reply::where('object_id' , '=' , $ob->id)->first()->id);
+        }
+      }
 
       return $result;
 
