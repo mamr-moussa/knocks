@@ -421,13 +421,13 @@ Route::group(['middleware' => 'auth'] , function(){
 
   Route::post('retrive_knock' , 'KnockController@retrive' );
 
-  Route::get('/{user}' , 'UserController@routeToProfile');
+ /* Route::get('/{user}' , 'UserController@routeToProfile');
 
   Route::get('/knock/{knock}' , 'KnockController@viewKnock');
   
   Route::get('/cmnt/{comment}' , 'KnockController@viewComment');
 
-  Route::get('/knock/{knock}/{comment}' , 'KnockController@viewKnockWithComment');
+  Route::get('/knock/{knock}/{comment}' , 'KnockController@viewKnockWithComment'); */
 
 
 
